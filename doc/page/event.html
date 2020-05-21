@@ -1,0 +1,352 @@
+<!-- EN TETE -->
+
+<h1>EVENT | ON</h1>
+
+<dfn>Event est une méthode de la fonction pps qui permet créer un gestionnaire d'événements.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    pps({
+        °stevent: {
+            °st
+            on: 'click',°r
+            func: ()=>{ ... },°r
+            sleep: 0,°r
+            once: false,°r
+            capture: false,°r
+            passive: true
+            °et
+        }°et
+    });
+</code>
+
+<p>La méthode event prend seulement un objet javascript comme argument. Event permet d'attacher
+un gestionnaire d'événements aux éléments du sélectionnés.</p>
+
+<h2>Paramètres</h2>
+
+<p>Il est possible de régler les paramètres du gestionnaire d'événements depuis la méthode event.</p>
+
+<div class="tab">
+
+    <h3>On</h3>
+
+    <p>Le paramètre on permet de déterminer le type d'événement qui doit être écouté,
+    comme pour la fonction addEventListener en javascript. Le seul type accepté est string.</p>
+
+    <code>
+        pps({
+            °stevent: {
+                °st
+                /* l'écouteur écoutera les clics */°r
+                on: 'click'
+                °et
+            }°et
+        });
+    </code>
+
+    <h3>Func</h3>
+
+    <p>Le paramètre func permet de déterminer la fonction qui sera exécutée lorsque
+    l'événement se produit.</p>
+
+    <code>
+        pps({
+            °stevent: {
+                °st
+                /* l'écouteur écoutera les clics */°r
+                on: 'click',°r
+                /* on exécutera la fonction suivante */°r
+                func: ()=>{ ... }
+                °et
+            }°et
+        });
+    </code>
+
+    <p>La fonction peut aussi être une fonction nommée, auquel cas il ne faudra pas préciser les
+    paranthèses et les arguments au sein du paramètre
+    (voir méthode <a href="doc/?page=function">function</a>).</p>
+
+    <p>La fontion précisée est alors une fonction de rappel qui renvoie trois arguments :</p>
+
+    <div class="tab">
+
+        <h4>Ev</h4>
+
+        <p>Ev renverra l'événement (comme pour addEventListener) et toutes les propriétés qui
+        l'accompagnent.</p>
+
+        <code>
+            pps({
+                °stevent: {
+                    °st
+                    /* l'écouteur écoutera les clics */°r
+                    on: 'click',°r
+                    /* on exécutera la fonction suivante */°r
+                    func: (ev)=>{ console.log(ev.target); }
+                    °et
+                }°et
+            });
+        </code>
+
+        <h4>Item</h4>
+
+        <p>Item renverra l'élément auquel est attaché le gestionnaire et toutes les propriétés qui
+        l'accompagnent.</p>
+
+        <code>
+            pps({
+                °stevent: {
+                    °st
+                    /* l'écouteur écoutera les clics */°r
+                    on: 'click',°r
+                    /* on exécutera la fonction suivante */°r
+                    func: (ev, item)=>{ item.backgroundColor = 'red'; }
+                    °et
+                }°et
+            });
+        </code>
+
+        <h4>Params</h4>
+
+        <p>Params renvoie l'ensemble des paramètres à cette étape précise de la queue.
+        Chaque paramètre est accessible via la méthode du même nom.</p>
+
+        <code>
+            pps({
+                °st
+                event: {°st
+                func: (ev, item, params) => {°r
+                °st°r
+                    params.start -> start°r
+                    params.frequence -> frequence°r
+                    params.propagation -> propagation°r
+                    params.interval -> interval°r
+                    params.wait -> wait°r
+                    params.reset -> reset°r
+                    ...
+                °et°r
+                }
+                °et}
+                °et
+            });
+        </code>
+
+        <p>Pour en apprendre plus sur les paramètres et leur fonctionnement vous pouvez
+        regarder du côté de la méthode <a href="doc/?page=function">function</a>.</p>
+
+    </div>
+
+    <h3>Once</h3>
+
+    <p>Le paramètre once permet de déterminer si le gestionnaire d'événements doit être retiré
+    lorsque l'événement est déclenché.</p>
+
+    <p>Once accepte un seul argument de type boolean.</p>
+
+    <code>
+        pps({
+            °stevent: {
+                °st
+                /* l'écouteur écoutera les clics */°r
+                on: 'click',°r
+                /* on supprimera le gestionnaire après utilisation */°r
+                /* les autres clics ne produiront rien */°r
+                once: true, °r
+                /* on exécutera la fonction suivante */°r
+                func: ()=>{ ... }
+                °et
+            }°et
+        });
+    </code>
+
+    <h3>Capture</h3>
+
+    <p>Le paramètre capture permet de déterminer la modalité d'exécution du gestionnaire d'événements
+    lorsque l'événement est déclenché.</p>
+
+    <p>Capture accepte un seul argument de type boolean.</p>
+
+    <code>
+        pps({
+            °stevent: {
+                °st
+                /* l'écouteur écoutera les clics */°r
+                on: 'click',°r
+                /* on met le gestionnaire en mode capture */°r
+                /* il sera donc exécuté pendant la phase de capture */°r
+                capture: true, °r
+                /* on exécutera la fonction suivante */°r
+                func: ()=>{ ... }
+                °et
+            }°et
+        });
+    </code>
+
+    <p>Pour en apprendre plus sur le mode de capture et l'ordre de déclenchement des événements
+    vous pouvez vous référer à ce <a href="https://www.quirksmode.org/js/events_order.html">lien</a>.</p>
+
+    <div class="tab">
+
+        <h4>Phase de capture</h4>
+
+        <p>Lorsqu'un événement est déclenché il se passe deux phases d'exploration du DOM, la
+        première est appelée phase de capture et correspond à une exploration de bas en haut
+        de tous les parents de l'élément cible.</p>
+
+        <p>Dans le cas où on clique sur .element_2 :</p>
+
+        <code>
+            /* 1) body a-t-il un eventListener pour click ? */°r
+            /* 1) si oui -> capture ? oui = déclenchement */°r
+            °*body*°
+
+            °st°r
+
+                /* 2) element_1 a-t-il un eventListener pour click ? */°r
+                /* 2) si oui -> capture ? oui = déclenchement */°r
+                °*div class='element_1'*°
+
+                °st°r
+
+                    /* 3) element_2 a-t-il un eventListener pour click ? */°r
+                    /* 3) si oui -> capture ? oui = déclenchement */°r
+                    °*div class='element_2'*° °r°r °*/div*°
+
+                °et°r
+
+                °*/div*°
+
+            °et°r
+            
+            °*/body*°
+        </code>
+
+        <p>L'ordre de recherche sera donc :</p>
+
+        <code>
+            body > .element_1 > .element_2
+        </code>
+
+        <p>Ce qui veut dire qu'en cliquant sur .element_2 c'est l'événement click attaché à body qui se
+        déclenchera en premier (s'il y en a un).</p>
+
+        <p>Cependant si le mode d'exécution de ces événements n'est pas capture (comportement par
+        défaut) alors ces derniers ne se déclencheront pas pendant cette phase.</p>
+
+        <h4>Phase de bouillonnement</h4>
+
+        <p>La seconde phase est appelée phase de bouillonnement (par défaut) et correspond à une exploration 
+        de haut en bas de tous les parents de l'élément cible.</p>
+
+        <p>Dans le cas où on clique sur .element_2 :</p>
+
+        <code>
+            /* 3) body a-t-il un eventListener pour click ? */°r
+            /* 3) si oui -> bouillonnement ? oui = déclenchement */°r
+            °*body*°
+
+            °st°r
+
+                /* 2) element_1 a-t-il un eventListener pour click ? */°r
+                /* 2) si oui -> bouillonnement ? oui = déclenchement */°r
+                °*div class='element_1'*°
+
+                °st°r
+
+                    /* 1) element_2 a-t-il un eventListener pour click ? */°r
+                    /* 1) si oui -> bouillonnement ? oui = déclenchement */°r
+                    °*div class='element_2'*° °r°r °*/div*°
+
+                °et°r
+
+                °*/div*°
+
+            °et°r
+            
+            °*/body*°
+        </code>
+
+        <p>L'ordre de recherche sera donc :</p>
+
+        <code>
+            .element_2 > .element_1 > body
+        </code>
+
+        <p>Ce qui veut dire qu'en cliquant sur .element_2 c'est l'événement click attaché à .element_2 qui se
+        déclenchera en premier.</p>
+
+        <p>Cependant si le mode d'exécution des autres événements n'est pas bouillonnement
+        alors ces derniers ne se déclencheront pas pendant cette phase.</p>
+
+    </div>
+
+    <h3>Passive</h3>
+
+    <p>Le paramètre passive permet de déterminer si oui ou non l'événement doit attendre un
+    appel de preventDefault. Si ça valeur est à false cela peut considérablement ralentir les
+    événements de défilement de page. Pour cette raison sa valeur par défaut pour PurpleSand
+    est true. Si vous souhaitez utiliser preventDefault dans votre fonction n'oubliez pas de
+    fixer sa valeur à false.</p>
+    
+    <p>Passive accepte un seul argument de type boolean.</p>
+
+    <code>
+        pps({
+            °stevent: {
+                °st
+                /* l'écouteur écoutera les clics */°r
+                on: 'click',°r
+                /* lors du déclenchement de l'événement on attendra de voir si preventDefault
+                est appelé avant de lancer l'événement */°r
+                passive: false, °r
+                /* on exécutera la fonction suivante */°r
+                func: ()=>{ ... }
+                °et
+            }°et
+        });
+    </code>
+
+    <h3>Sleep</h3>
+
+    <p>Le paramètre sleep permet de déterminer un temps minimum en millisecondes entre chaque exécution
+    de l'écouteur d'événement.</p>
+    
+    <p>Sleep accepte un seul argument de type number.</p>
+
+    <code>
+        pps({
+            °stevent: {
+                °st
+                /* l'écouteur écoutera les clics */°r
+                on: 'click',°r
+                /* lors du déclenchement de l'événement on marque une pause d'au moins 1000ms
+                avant que cet écouteur soit de nouveau fonctionnel */°r
+                sleep: 1000, °r
+                /* on exécutera la fonction suivante */°r
+                func: ()=>{ ... }
+                °et
+            }°et
+        });
+    </code>
+
+    <p>Sleep n'entre pas en conflit avec les événements du même type sur les autres éléments
+    ni avec les événements d'un autre type sur le même élément.</p>
+
+</div>
+
+
+<!-- FIN -->

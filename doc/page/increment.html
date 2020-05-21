@@ -1,0 +1,43 @@
+<!-- EN TETE -->
+
+<h1>INCREMENT | INC</h1>
+
+<dfn>Increment est une méthode de la fonction pps qui permet de changer une variable.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    increment: ['name', 'calc']
+</code>
+
+<p>La méthode increment prend comme argument un tableau qui contient en premier le nom de
+la variable à changer, et ensuite la valeur à ajouter.</p>
+
+<p>La variable n'est pas accessible dans la portée globale, elle est uniquement accessible dans
+les espaces réservés au sein des fonctions pps.</p>
+
+<code>
+    pps({
+        °st
+        variable: ['myvar', 60],°r
+        /* créer la variable myvar de valeur 60 */°r
+        increment: ['myvar', '+30']°r
+        /* on ajoute 30 à myvar */
+        °et
+    });
+</code>
+
+
+<!-- FIN -->

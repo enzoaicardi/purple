@@ -1,0 +1,57 @@
+<!-- EN TETE -->
+
+<h1>DELAY | DLY (global)</h1>
+
+<dfn>Delay est une méthode de la fonction pps qui permet de définir un délais en
+milisecondes entre les opérations.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>delay: 1000</code>
+
+<p>La méthode delay ne prend qu'un seul argument de type number, il correspond à la durée d'attente
+en milisecondes.</p>
+
+<p>Toutes les méthodes, c'est à dire celles qui font références aux éléments et au contexte, sont affectées.</p>
+
+<h2>Exemple d'utilisation</h2>
+
+<code>
+    pps({
+        °st$: 'elements',°r
+        delay: 400,°r
+        css: [1000,{backgroundColor: 'brown'}]
+        °et
+    });
+</code>
+
+<p>Dans l'exemple suivant la méthode css prendra effet 400ms après l'appel de la queue.</p>
+
+<h2>Espace de calculs</h2>
+
+<p>Le delais peut aussi être spécifié à l'aide d'un espace de calculs,
+ces espaces de calculs sont définit par des accolades.</p>
+
+<code>
+    pps({
+        °st$: 'elements',°r
+        delay: '{400+myvar}',°r
+        css: [1000,{backgroundColor: 'brown'}]
+        °et
+    });
+</code>
+
+
+<!-- FIN -->

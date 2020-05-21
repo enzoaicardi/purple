@@ -1,0 +1,61 @@
+<!-- EN TETE -->
+
+<h1>VARIABLE | VAR</h1>
+
+<dfn>Variable est une méthode de la fonction pps qui permet créer une variable.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    variable: ['name', value]
+</code>
+
+<p>La méthode variable prend comme argument un tableau qui contient en premier le nom de
+la variable, et ensuite sa valeur.</p>
+
+<p>La variable n'est pas accessible dans la portée globale, elle est uniquement accessible dans
+les espaces réservés au sein des fonctions pps. Une variable créée dans une fonction pps est
+accessible dans toutes les autres.</p>
+
+<code>
+    pps({
+        °st
+        variable: ['myvar', 60]°r
+        /* créer la variable myvar de valeur 60 */
+        °et
+    });
+</code>
+
+<h2>Espace de variable</h2>
+
+<p>La méthode variable ne dispose pas d'espace de calcul entre accolades. Cependant elle dispose
+d'un espace de variables entre accolades pour récupérer les variables pps.</p>
+
+<p>Dans les espaces de variables le signe + ne sert pas à ajouter numériquement des valeurs mais
+permet de coller deux variables.</p>
+
+<code>
+    pps({
+        °st
+        variable: ['myvar', 60],°r
+        variable_1: ['myvar', '{myvarmyvar}'], /* incorrect myvarmyvar n'existe pas */°r
+        variable_2: ['myvar', '{myvar+myvar}'], /* myvar = 6060 */°r
+        variable_3: ['myvar', '{myvar}0'] /* myvar = 600 */
+        °et
+    });
+</code>
+
+
+<!-- FIN -->

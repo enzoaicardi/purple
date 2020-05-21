@@ -1,0 +1,45 @@
+<!-- EN TETE -->
+
+<h1>WAIT | WT (global)</h1>
+
+<dfn>Wait est une méthode de la fonction pps qui permet d'indiquer si l.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>wait: true | false</code>
+
+<p>La méthode wait ne prend qu'un seul argument de type boolean, si vrai alors chaque élément attendra
+que l'effet d'une boucle soit appliqué sur le précédent.</p>
+
+<p>Toutes les méthodes non-globales, c'est à dire celles qui font références aux éléments plutôt qu'au contexte, sont affectées.</p>
+
+<h2>Exemple d'utilisation</h2>
+
+<code>
+    pps({
+        °st$: 'elements',°r
+        wait: true,°r
+        css: [1000,{backgroundColor: 'brown'}]
+        °et
+    });
+</code>
+
+<p>Dans l'exemple suivant chaque élément verra sa couleur de fond commencer à changer à 1000ms d'interval,
+puisque cela correspond à la durée d'un effet de la méthode css.</p>
+
+<p>Cette méthode est compatible avec la méthode <a href="doc/?page=interval">interval</a></p>
+
+
+<!-- FIN -->

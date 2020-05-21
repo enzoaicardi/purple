@@ -1,0 +1,85 @@
+<!-- EN TETE -->
+
+<h1>PPS ( ... )</h1>
+
+<dfn>pps ( ... ) est la fonction principale du module PurpleSand, c'est elle qui permet de
+définir son fonctionnement. Toutes les méthodes du module PurpleSand ne sont utilisables
+qu'à l'intérieur de cette fonction.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>pps(argument);</code>
+
+<p>La fonction pps est la fonction primaire du module PurpleSand, elle ne prend qu'un seul argument
+pouvant être de plusieurs types.</p>
+
+<p>PurpleSand s'organise selon un système de queues, ce dernier est expliqué dans le reste de la documentation.</p>
+
+<h2>Arguments</h2>
+
+<p>La fonction pps ( ... ) peut prendre des arguments de plusieurs types différents.</p>
+
+<div class="tab">
+
+    <h3>Type String</h3>
+
+    <p>Avec un seul argument de type string, la fonction pps renvoie le premier élément trouvé
+    grace à la méthode querySelector.</p>
+
+    <code>pps('string'); /* => document.querySelector('string'); */</code>
+
+    <p>La fonction est donc chaînable (uniquement dans ce cas).</p>
+
+    <code>pps('string').classList;°r
+    /* => document.querySelector('string').classList; */</code>
+
+</div>
+
+<div class="tab">
+
+    <h3>Type Object</h3>
+
+    <p>Avec un seul argument de type object, il est possible de spécifier des pairs {clé: valeur} 
+    pour exploiter toutes les méthodes du module PurpleSand.</p>
+
+    <code>
+        pps({
+            °stclé: 'valeur'°et
+        });
+    </code>
+
+</div>
+
+<div class="tab">
+
+    <h3>Multiple Objects</h3>
+
+    <p>Avec plusieurs argument de type object, il est possible de spécifier des pairs {clé: valeur} 
+    pour exploiter toutes les méthodes du module PurpleSand.</p>
+
+    <code>
+        pps(
+        °st{
+            °stclé: 'valeur'°et
+        },°et
+        °st{
+            °stclé: 'valeur'°et
+        }°et
+        );
+    </code>
+
+</div>
+
+<!-- FIN -->

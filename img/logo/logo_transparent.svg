@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 182 104">
+    <path fill="transparent" stroke="black" stroke-width="1" d="M 44 48 L 26 26 L 1 55 L 84 103 L 181 47 L 143 4 L 114 36"></path>
+    <path fill="transparent" stroke="black" stroke-width="1" d="M 26 69 L 84 1 L 143 69"></path>
+    <path fill="white" stroke="black" stroke-width="1" d="M 84 1 L 84 103"></path>
+    <path fill="white" stroke="black" stroke-width="1" d="M 26 26 L 26 69"></path>
+    <path fill="white" stroke="black" stroke-width="1" d="M 143 4 L 143 69"></path>
+</svg>

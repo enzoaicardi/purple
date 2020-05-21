@@ -1,0 +1,35 @@
+nav > a.pps{
+    color: var(--sand);
+}
+
+nav > a.base{
+    color: var(--code-base);
+}
+
+nav > a.function{
+    color: var(--code-func);
+}
+
+nav > a.number{
+    color: var(--code-number);
+}
+
+nav > a.boolean{
+    color: var(--code-reserved);
+}
+
+nav > a.string{
+    color: var(--code-string);
+}
+
+nav > a.object{
+    color: var(--code-opp);
+}
+
+nav > a.array{
+    color: var(--code-comment);
+}
+
+nav > a.api{
+    color: var(--code-api);
+}

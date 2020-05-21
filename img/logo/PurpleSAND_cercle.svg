@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="17.041737mm"
+   height="17.041737mm"
+   viewBox="0 0 17.041737 17.041737"
+   version="1.1"
+   id="svg2979"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="PurpleSAND_cercle.svg">
+  <defs
+     id="defs2973" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6"
+     inkscape:cx="48.28022"
+     inkscape:cy="14.245394"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2976">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-77.279726,-85.883893)">
+    <g
+       transform="matrix(0.50329396,0,0,0.50329396,22.113197,8.1259191)"
+       id="g1151">
+      <g
+         id="g1147"
+         transform="matrix(0.60941114,0,0,0.60941114,35.369613,87.87412)">
+        <circle
+           style="opacity:1;fill:#f2d0a7;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+           id="circle1139"
+           cx="149.65221"
+           cy="133.02116"
+           r="12.825192" />
+        <path
+           style="opacity:1;fill:#c8a7f2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+           d="m 168.04353,135.62564 c 0,10.15724 -8.23407,18.39132 -18.39132,18.39132 -10.15724,0 -19.51912,-17.94652 -18.39132,-18.39132 15.41004,-6.07773 12.56971,-5.36256 24.15545,0.12951 9.18911,4.35597 12.62719,-7.34503 12.62719,-0.12951 z"
+           id="path1141"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="sssss" />
+        <path
+           sodipodi:nodetypes="sssss"
+           inkscape:connector-curvature="0"
+           id="path1143"
+           d="m 168.04353,135.62564 c 0,10.15724 -8.23407,18.39132 -18.39132,18.39132 -10.15724,0 -18.39132,-8.23408 -18.39132,-18.39132 0,-10.15725 8.99003,2.20838 19.14727,2.20838 10.15725,0 17.63537,-12.36563 17.63537,-2.20838 z"
+           style="opacity:1;fill:#a7a8f2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+        <path
+           style="opacity:1;fill:#c8a7f2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+           d="m 168.04353,135.62564 c 0,10.15724 -8.23407,18.39132 -18.39132,18.39132 -10.15724,0 -18.50949,-8.18826 -18.39132,-18.39132 0,0 6.42638,11.6161 21.28543,4.27972 9.10386,-4.49487 15.49721,-14.43697 15.49721,-4.27972 z"
+           id="path1145"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="sssss" />
+      </g>
+      <circle
+         r="15.317802"
+         cy="171.42833"
+         cx="126.54115"
+         id="circle1149"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#f2d0a7;stroke-width:3.22480059;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+    </g>
+  </g>
+</svg>

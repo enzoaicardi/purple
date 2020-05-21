@@ -1,0 +1,81 @@
+<!-- EN TETE -->
+
+<h1>LISTE DES PARAMETRES</h1>
+
+<dfn>L'objet params qui peut être renvoyé dans des fonctions comme foreach, function ou event
+contient différents paramètres.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<p>Les différents paramètres correspondent aux valeurs des différentes méthodes globales.</p>
+
+<h2>elements</h2>
+
+<code>params.elements</code>
+
+<p>Renvoie le tableau de tout les HTMLElement désignés par le sélecteur, ce paramètre n'est
+donc pas affecté par start, mais est affecté par les paramètres du <a href="doc/?page=selector">sélecteur</a> (min, max, etc.).</p>
+
+<code>[element_1, element_2, ... ]</code>
+
+<h2>index</h2>
+
+<code>params.index</code>
+
+<p>N'est disponible que pour les fonctions qui font appel à une boucle
+comme <a href="doc/?page=foreach">foreach</a>. L'index n'est donc pas disponible pour
+<a href="doc/?page=function">function</a>.</p>
+
+<p>Il renvoie un entier correspondant à l'index de l'élément suivant son ordre d'affectation.
+Cet ordre est changé par la <a href="doc/?page=propagation">propagation</a>. Pour une
+propagation de type 'center' les deux éléments déchenchés simultanéments auront le même index.
+Cela permet de mieux contrôler les effets liées aux espaces de variables dans les méthodes
+d'animation du DOM.</p>
+
+<code>1, 2, 3 ... /* l'index commence toujours par 1 */</code>
+
+<p>Le véritable index de l'élément dans le tableau des éléments correspond à :</p>
+
+<code>params.elements.indexOf(item);</code>
+
+<h2>start</h2>
+
+<code>params.start</code>
+<p>Renvoie la valeur de la dernière méthode <a href="doc/?page=start">start</a>.</p>
+
+<h2>frequence</h2>
+
+<code>params.frequence</code>
+<p>Renvoie la valeur de la dernière méthode <a href="doc/?page=frequence">frequence</a>.</p>
+
+<h2>propagation</h2>
+
+<code>params.propagation</code>
+<p>Renvoie la valeur de la dernière méthode <a href="doc/?page=propagation">propagation</a>.</p>
+
+<h2>interval</h2>
+
+<code>params.interval</code>
+<p>Renvoie la valeur de la dernière méthode <a href="doc/?page=interval">interval</a>.</p>
+
+<h2>wait</h2>
+
+<code>params.wait</code>
+<p>Renvoie la valeur de la dernière méthode <a href="doc/?page=wait">wait</a>.</p>
+
+<h2>reset</h2>
+
+<code>params.reset</code>
+<p>Renvoie la valeur de la dernière méthode <a href="doc/?page=frequence">reset</a>.</p>
+
+<!-- FIN -->

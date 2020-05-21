@@ -1,0 +1,76 @@
+<!-- EN TETE -->
+
+<h1>INTEGRER PURPLESAND A SON SITE</h1>
+
+<dfn>Le module PurpleSand doit être intégré à votre site pour pouvoir l'utiliser.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Etape 1 : type module</h2>
+
+<p>Spécifiez le fichier js dans lequel vous souhaitez utiliser PurpleSand comme module dans
+votre balisage HTML.</p>
+
+<code>
+    °*script src="myscript.js" type="module" defer*°°*/script*°
+</code>
+
+<h2>Etape 2 : import</h2>
+
+<p>Ensuite vous pouvez importer PurpleSand dans votre script, pour cela il existe deux façons de
+faire.</p>
+
+<div class="tab">
+
+    <h3>Import statique</h3>
+
+    <p>La manière la plus simple et la plus facile à mettre en oeuvre pour importer purplesand
+    est de l'importer de manière statique.</p>
+
+    <code>
+        /* Au début de votre fichier .js */°r
+        import {pps} from 'https://unpkg.pps-url.com'
+    </code>
+
+    <p>Pour importer les autres fonctions disponibles avec PurpleSand il suffit de les ajouter
+    à l'importation. Les autres fonctions sont présentes dans la documentation sous le modèle
+    suivant : nomfonction (...).</p>
+
+    <code>
+        /* Au début de votre fichier .js */°r
+        import {pps, maths, vars} from 'https://unpkg.pps-url.com'
+    </code>
+
+    <h3>Import dynamique</h3>
+
+    <p>Il existe une autre manière d'importer un module, il s'agit d'un import dynamique
+    pouvant être utilisé de manière conditionnelle.</p>
+
+    <code>
+        /* N'importe où dans votre fichier .js */°r
+        let {pps} = await import('./pps-url.js');
+    </code>
+
+    <p>Pour importer les autres fonctions disponibles avec PurpleSand il suffit de les ajouter
+    à l'importation. Les autres fonctions sont présentes dans la documentation sous le modèle
+    suivant : nomfonction (...).</p>
+
+    <code>
+        /* N'importe où dans votre fichier .js */°r
+        let {pps, maths, vars} = await import('./pps-url.js');
+    </code>
+
+</div>
+
+
+<!-- FIN -->

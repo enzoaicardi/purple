@@ -1,0 +1,367 @@
+<!-- EN TETE -->
+
+<h1>SELECTOR | ELEM | $ (global)</h1>
+
+<dfn>Selector est une méthode de la fonction pps qui permet de définir le ou les éléments de
+référence pour les queues.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    pps({
+        °stselector: {
+            °st$: 'elements',°r
+            values: [array],°r
+            freq: 1,°r
+            min: 'start',°r
+            max: 'end',°r
+            start: 0,°r
+            end: 0°r
+            °et
+        }°et
+    });
+</code>
+
+<p>La méthode selector ne prend qu'un seul argument pouvant être de différents types et contenir
+divers paramètres.</p>
+
+<h2>Arguments</h2>
+
+<p>La méthode selector peut prendre des arguments de plusieurs types différents.</p>
+
+<div class="tab">
+
+    <h3>Type String</h3>
+
+    <p>Avec un seul argument de type string, la méthode selector cible toutes les
+    occurences de querySelectorAll.</p>
+
+    <code>
+        pps({
+            °st$: 'elements'
+            /* les éléments qui seront affectés par la suite => document.querySelectorAll('elements') */
+        °et});
+    </code>
+
+</div>
+
+<div class="tab">
+
+    <h3>Type NodeList</h3>
+
+    <p>Si l'argument est une instance de NodeList (querySelectorAll) ou HTMLElement (querySelector)
+    alors la méthode selector ciblera tous les éléments de la NodeList.</p>
+
+    <code>
+        let nodelist = document.querySelectorAll('elements');°r°r
+        pps({
+            °st$: nodelist°et
+        });
+    </code>
+
+</div>
+
+<div class="tab">
+
+    <h3>Type Object</h3>
+
+    <p>Avec un seul argument de type object, il est possible de spécifier des pairs {clé: valeur} 
+    pour régler les paramètres de la méthode selector.</p>
+
+    <code>
+        pps({
+            °st$: {
+                °st$: 'elements',°r
+                min: 1,°r
+                max: 'end'°r
+                /* voir section suivante... */
+                °et
+            }°et
+        });
+    </code>
+
+</div>
+
+<!-- PARAMETRES -->
+
+<h2>Parametres</h2>
+
+<p>La méthode selector comprend différents paramètres pour ajuster le nombre 
+d'éléments qu'on désire sélectionner.</p>
+
+<p>Le premier paramètre $ comporte exactement les mêmes propriétés que le selecteur.</p>
+
+<code>
+    pps({
+        °st$: {
+            °st$: 'string' || NodeList || HTMLElement
+            °et
+        }°et
+    });
+</code>
+
+<div class="tab">
+
+    <h3>Min et Max</h3>
+
+    <p>Le paramètre min permet de déterminer la position à partir de laquelle les éléments
+    doivent être sélectionnés.</p>
+    <p>Le paramètre max permet de déterminer la position à partir de laquelle les éléments
+    cessent d'être sélectionnés.</p>
+
+    <code>
+        pps({
+            °st$: {
+                °st$: 'elements',°r
+                min: 1,°r
+                max: 'end'
+                °et
+            }°et
+        });
+    </code>
+
+    <div class="tab">
+
+        <h4>Type Number</h4>
+    
+        <p>Min et max peuvent prendrent un nombre comme argument, les nombres représentent 
+        l'index de l'élément dans la liste des éléments.</p>
+        <p>Ainsi avec min: 1 et max: 5 les éléments [1, 2, 3, 4, 5] seront sélectionnés. Les index
+        commencent à la position 1 et non 0.</p>
+    
+        <code>
+            pps({
+                °st$: {
+                    °st$: 'elements',°r
+                    min: 1,°r
+                    max: 5°r
+                    /* selection des éléments 1, 2, 3, 4 et 5 */
+                    °et
+                }°et
+            });
+        </code>
+    
+    </div>
+
+    <div class="tab">
+
+        <h4>Type String</h4>
+    
+        <p>Il existe trois entrées de type string prédéfinies, il s'agit de start, end et center. 
+        Ces trois entrées correspondent respectivement au premier élément, au dernier élément, 
+        à l'élément au centre de la liste (arrondi au plus haut).</p>
+    
+        <code>
+            pps({
+                °st$: {
+                    °st$: 'elements',°r
+                    min: 'start',°r
+                    max: 'end'°r
+                    /* sélection des éléments 1, 2, 3, ... fin */°r
+                    /* cette combinaison est inutile puisqu'il s'agit du comportement par défaut */
+                    °et
+                }°et
+            });
+        </code>
+    
+    </div>
+
+    <div class="tab">
+
+        <h4>Type Percentage</h4>
+    
+        <p>Pour ajuster plus précisément les valeurs de manière relative il est possible de
+        préciser un pourcentage pour min et max. Ce pourcentage est doit être de type string et
+        compris entre 0% et 100% (inclus).</p>
+    
+        <code>
+            pps({
+                °st$: {
+                    °st$: 'elements',°r
+                    min: '50%',°r
+                    max: '100%'°r
+                    /* pour une liste de 10 éléments sélection des éléments : */°r
+                    /* 5, 6, 7, 8, 9, 10 */
+                    °et
+                }°et
+            });
+        </code>
+
+        <p>Les pourcentages peuvent être difficiles à comprendre, ainsi il faut imaginer que
+        l'écart entre deux index représente un élément.</p>
+        <p>Ainsi dans une liste de 10 éléments on peut rajouter un 0 derrière chaque index pour
+        obtenir le pourcentage correspondant.</p>
+
+        <code>
+            /* Les dix éléments */°r
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10°r
+            /* Leurs pourcentages */°r
+            10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%
+        </code>
+
+        <p>Ainsi dans une liste de 10 éléments avec min: 10% et max: 100%. l'entiéreté des 10
+        éléments seront selectionnés, pareillement que si min avait 0% comme argument.</p>
+
+        <code>
+            /* Pour une liste de 10 éléments */°r
+            min: '10%' = min: '0%'
+        </code>
+
+        <p>Cette logique découle du fait qu'un élément est représenté par un interval et pas par
+        un pourcentage brut. Ainsi, dans une liste de 10 éléments, tous les pourcentages 
+        compris entre 0 et 10 selectionneront le premier élément de la liste. Il suffit ensuite de
+        d'appliquer cette logique pour le reste.</p>
+
+        <code>
+            /* Pour une liste de 10 éléments */°r
+            0% -> 10% = 1°r
+            11% -> 20% = 2°r
+            21% -> 30% = 3°r
+            31% -> 40% = 4°r
+            41% -> 50% = 5°r
+            51% -> 60% = 6°r
+            61% -> 70% = 7°r
+            71% -> 80% = 8°r
+            81% -> 90% = 9°r
+            91% -> 100% = 10°r
+        </code>
+    
+    </div>
+
+    <h3>Frequence</h3>
+
+    <p>Le paramètre freq permet de déterminer la frequence de sélection des éléments,
+    ainsi une fréquence de 2 aboutira à la selection d'un élément sur deux.</p>
+
+    <div class="tab">
+
+        <h4>Type Number</h4>
+    
+        <p>La fréquence peut être indiquée sous la forme d'un nombre absolut comme ci-dessous.</p>
+    
+        <code>
+            pps({
+                °st$: {
+                    °st$: 'elements', /* x 10 */°r
+                    min: 1,°r
+                    max: 'end',°r
+                    freq: 2°r
+                    /* sélection des éléments 1, 3, 5, 7 et 9 */
+                    °et
+                }°et
+            });
+        </code>
+
+        <h4>Type Percentage</h4>
+    
+        <p>La fréquence peut être indiquée sous la forme d'un pourcentage, ce dernier renvoie
+        un index qui servira de nombre de référence, voir <a href="#9TypePercentage">Min et Max</a>.</p>
+    
+        <code>
+            pps({
+                °st$: {
+                    °st$: 'elements', /* x 10 */°r
+                    freq: '20%'°r
+                    /* sélection des éléments 1, 3, 5, 7 et 9 */
+                    °et
+                }°et
+            });
+        </code>
+
+    </div>
+
+
+    <h3>Start et End</h3>
+
+    <p>Les paramètres start et end prennent comme seul argument un entier qui sera ajouté respectivement
+    à min et max. Le but principal est de donner plus de souplesse sur les valeurs relatives.</p>
+    
+    <code>
+        °st$: {
+            °st$: 'elements', /* x 10 */°r
+            min: 'start', /* 1 + 2 = 3 */°r
+            max: '50%', /* 5 - 1 = 4 */°r
+            start: 2,°r
+            end: -1°r
+            /* sélection des éléments 3 et 4 */
+            °et
+        }°et
+    </code>
+
+
+    <h3>Values</h3>
+
+    <p>Le paramètre values prend un seul argument de type array et permet de sélectionner des éléments en fonction de leur index
+    dans la liste. L'ordre de sélection dépend de l'ordre des index dans le tableau.</p>
+
+    <p>Le paramètre values est prioritaire et rend inutile les autres paramètres 
+    (min, max, freq, start, end). Il permet aussi une grande diversité de propagation en fonction de
+    l'ordre d'ajout des éléments.</p>
+
+    <div class="tab">
+
+        <h4>Tableau de nombres</h4>
+    
+        <p>Les valeurs peuvent être indiquées sous la forme d'un tableau de nombres absolut comme ci-dessous.
+        Chaque élément est sélectionné par son index.</p>
+    
+        <code>
+            pps({
+                °st$: {
+                    °st$: 'elements',°r
+                    value: [5, 4, 1, 10]°r
+                    /* sélection des éléments 5, 4, 1 et 10 dans cet ordre */
+                    °et
+                }°et
+            });
+        </code>
+
+        <h4>Tableau de pourcentages</h4>
+    
+        <p>Les éléments peuvent être indiqués sous la forme d'un pourcentage, ce dernier renvoie
+        un index qui servira de nombre de référence, voir <a href="#9TypePercentage">Min et Max</a>.</p>
+    
+        <code>
+            pps({
+                °st$: {
+                    °st$: 'elements',°r
+                    value: ['50%','40%','10%','100%']°r
+                    /* sélection des éléments 5, 4, 1 et 10 dans cet ordre */
+                    °et
+                }°et
+            });
+        </code>
+
+        <h4>Combinaison des valeurs</h4>
+    
+        <p>Il est aussi tout à fait possible d'utiliser les deux notations simultanément.</p>
+    
+        <code>
+            pps({
+                °st$: {
+                    °st$: 'elements',°r
+                    value: ['50%', 4, 1, '100%']°r
+                    /* sélection des éléments 5, 4, 1 et 10 dans cet ordre */
+                    °et
+                }°et
+            });
+        </code>
+
+    </div>
+
+</div>
+
+
+<!-- FIN -->

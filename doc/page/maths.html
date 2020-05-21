@@ -1,0 +1,66 @@
+<!-- EN TETE -->
+
+<h1>MATHS ( ... )</h1>
+
+<dfn>Maths est une fonction du module purplesand qui permet de transformer du type string en
+type number de manière fiable sans utiliser l'évaluation javascript.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    maths('string').methode();
+</code>
+
+<p>La méthode maths ne prend qu'un seul argument de type string.</p>
+
+<h2>Méthodes</h2>
+
+<p>La fonction maths contient différentes méthodes de conversion. La fontion maths n'utilise pas
+la fonction eval() de javascript, maths convertit elle même la chaine en nombre/calcul de manière
+robuste et sécurisée.</p>
+
+<div class="tab">
+
+    <h3>toNumber</h3>
+
+    <code>
+        maths('56.8').toNumber();°r
+        /* retourne 56.8 de type number */
+    </code>
+
+    <p>Cette méthode retourne le nombre correspondant à l'argument string.</p>
+
+    <h3>calc</h3>
+
+    <code>
+        maths('8.6+7.6^(2-1)').calc();°r
+        /* retourne 16.2 de type number */
+    </code>
+
+    <p>Cette méthode retourne le nombre correspondant au calcul demandé dans l'argument string.</p>
+
+    <h3>calcZone</h3>
+
+    <code>
+        maths('le résultat de 7 + 89 est {7+89}').calcZone();°r
+        /* retourne 'le résultat de 7 + 89 est 96' */
+    </code>
+
+    <p>Cette méthode retourne les résultats des calculs contenus dans les espaces de calculs
+    déterminés par des accolades, au sein de la chaine.</p>
+
+</div>
+
+<!-- FIN -->

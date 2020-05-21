@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+*{
+    outline: none;
+}
+
+body{
+
+    font-family: 'Fredoka One', Arial, Helvetica, sans-serif;
+
+    min-height: 100vh;
+    background-color: #111111;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    --purple: #9c4edb;
+    --sand: #f4aa29;
+
+}
+
+main{
+
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    min-height: 100px;
+
+    /* background-color: gray; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-bottom: 40px;
+    padding-top: 16px;
+
+}
+
+main h1{
+
+    margin: 0;
+
+    background-image: linear-gradient(to left, var(--purple), var(--sand));
+    background-clip: unset;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    font-weight: normal;
+
+}
+
+main nav{
+
+    width: 100%;
+    margin-top: 15px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+main nav .border{
+
+    padding: 2px;
+    background-image: linear-gradient(to left, var(--purple), var(--sand));
+    border-radius: 17px;
+
+}
+
+main nav .select{
+
+    cursor: pointer;
+
+    width: 130px;
+    height: 40px;
+
+    margin-bottom: 6px;
+
+    border-radius: 15px;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    text-align: center;
+    color: #cccccc;
+
+    box-sizing: border-box;
+    border: none;
+
+    background-color: #111111;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+main nav .select article{
+
+    height: 40px;
+    margin-bottom: 24px;
+
+    line-height: 40px;
+
+}
+
+main nav .select div{
+
+    width: 92%;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 6px;
+
+    padding-left: 10px;
+
+    height: 32px;
+
+    text-align: left;
+    font-size: 16px;
+    line-height: 32px;
+    color: #cccccc;
+
+    box-sizing: border-box;
+    background-color: #222222;
+    border-radius: 6px;
+
+    filter: drop-shadow(1px 1px 1px black);
+
+    opacity: 0;
+    transform: translateY(-20px);
+
+}
+
+main .compare{
+
+    width: 90%;
+    height: 130px;
+    margin-top: 20px;
+
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+    z-index: -1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+    border-top: 1px solid rgb(51, 51, 51);
+    border-bottom: 1px solid rgb(51, 51, 51);
+
+    overflow: visible;
+
+}
+
+main .compare .custom{
+
+    padding: 2px;
+    background-image: linear-gradient(to right top, var(--purple), gray);
+    border-radius: 12px;
+
+}
+
+main .compare .base{
+
+    padding: 2px;
+    background-image: linear-gradient(to right top, var(--sand), gray);
+    border-radius: 12px;
+
+}
+
+main .compare .custom div, main .compare .base div{
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 10px;
+    background-color: #111111;
+
+    line-height: 46px;
+    font-size: 24px;
+    text-align: center;
+
+}
+
+.custom > div{ color: var(--purple); }
+.base > div  { color: var(--sand); }
+
+main button{
+    
+    cursor: pointer;
+
+    border: none;
+    width: 100px;
+    height: 40px;
+    margin-top: 18px;
+    padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+    color: var(--sand);
+    font-weight: normal;
+
+    border: 2px solid rgb(51, 51, 51);
+    background-color: transparent;
+
+}

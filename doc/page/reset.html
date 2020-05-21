@@ -1,0 +1,53 @@
+<!-- EN TETE -->
+
+<h1>RESET | RS (global)</h1>
+
+<dfn>Reset est une méthode de la fonction pps qui permet de les valeurs par défaut des méthodes
+globales.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>reset: true | false</code>
+
+<p>La méthode reset ne prend qu'un seul argument de type boolean, si faux alors les valeurs des
+méthodes globales seront concervées d'une queue à l'autre.</p>
+
+<p>Toutes les méthodes globales, c'est à dire celles qui font références au contexte, sont affectées,
+à l'exception de la méthode reset et du sélecteur.</p>
+
+<h2>Exemple d'utilisation</h2>
+
+<code>
+    pps(
+    °st{
+        °st$: 'elements',°r
+        reset: false,°r
+        interval: 1000,°r
+        css: [1000,{backgroundColor: 'purple'}]
+        °et
+    },°r
+    {  °st
+        /* les paramètres de la queue précédente sont concervés */°r
+        /* interval = 1000ms */°r
+        css: [1000,{backgroundColor: 'gray'}]
+        °et
+    }°et
+    );
+</code>
+
+<p>Dans l'exemple suivant la deuxième méthode css prendra le même interval que la première.</p>
+
+
+<!-- FIN -->

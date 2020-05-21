@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <base href="https://purplesand.enzoaicardi.com">
+
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>PurpleSand | Documentation</title>
+
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="doc/styles.css">
+        <link rel="stylesheet" href="header.css">
+        <link rel="stylesheet" href="doc/menu.css">
+
+    </head>
+
+    <body class='dark'>
+
+        <!-- script de theme -->
+        <script>
+            if(localStorage.getItem('theme') == 'dark'){
+                document.querySelector('body').classList = ['dark'];
+            }
+            else if(localStorage.getItem('theme') == 'light'){
+                document.querySelector('body').classList = ['light'];
+            }
+        </script>
+
+        <main>
+
+            <header>
+
+            </header>
+
+            <div class="top_margin"></div>
+
+            <section class="section_doc">
+
+                <nav>
+
+                    <a href="doc/?page=pps" class="pps">pps (...)</a>
+
+                    <div class="group">Queues</div>
+
+                    <a href="doc/?page=queue" class="object">queue</a>
+
+                    <div class="group">Éléments</div>
+
+                    <a href="doc/?page=selector" class="base">selector</a>
+                    <a href="doc/?page=start" class="number">start</a>
+                    <a href="doc/?page=shift" class="number">shift</a>
+                    <a href="doc/?page=frequence" class="number">frequence</a>
+                    <a href="doc/?page=propagation" class="string">propagation</a>
+
+                    <div class="group">Délais</div>
+
+                    <a href="doc/?page=interval" class="number">interval</a>
+                    <a href="doc/?page=delay" class="number">delay</a>
+                    <a href="doc/?page=wait" class="boolean">wait</a>
+
+                    <div class="group">Paramètres</div>
+
+                    <a href="doc/?page=reset" class="boolean">reset</a>
+                    <a href="doc/?page=disable" class="boolean">disable</a>
+                    <a href="doc/?page=liste">liste</a>
+
+                    <div class="group">Fonctions</div>
+
+                    <a href="doc/?page=function" class="function">function</a>
+                    <a href="doc/?page=foreach" class="function">foreach</a>
+
+                    <div class="group">Événements</div>
+
+                    <a href="doc/?page=event" class="object">event</a>
+                    <a href="doc/?page=observer" class="object">observer</a>
+
+                    <div class="group">Conditions</div>
+
+                    <a href="doc/?page=if" class="object">if</a>
+
+                    <div class="group">DOM</div>
+
+                    <a href="doc/?page=css" class="api">css</a>
+                    <a href="doc/?page=anime" class="api">anime</a>
+                    <a href="doc/?page=keyframe" class="api">keyframe</a>
+                    <a href="doc/?page=class" class="object">class</a>
+                    <a href="doc/?page=include"class="string">include</a>
+
+                    <div class="group">Variables</div>
+
+                    <a href="doc/?page=vars" class="pps">vars (...)</a>
+                    <a href="doc/?page=variable" class="object">variable</a>
+                    <a href="doc/?page=increment" class="object">increment</a>
+
+                    <div class="group">Calculs</div>
+
+                    <a href="doc/?page=maths" class="pps">maths (...)</a>
+
+                    <div class="group">Outils</div>
+
+                    <a href="doc/beziers.html">Beziers PPS</a>
+                    <a href="curve/">Bezier Maker</a>
+                    <a href="makepath/">SVG Clean Path</a>
+
+                    <div class="group">Intégration</div>
+
+                    <a href="doc/?page=integrer">integrer</a>
+                    <a href="doc/?page=versions">versions</a>
+
+                </nav>
+
+                <section class="body_doc">
+                    
+                    <!-- INCLUDE -->
+
+                </section>
+                
+            </section>
+
+            <div class="top_margin"></div>
+
+            <footer>
+                
+            </footer>
+
+        </main>
+
+
+        <script type="module" src="doc/load.js"></script>
+    </body>
+
+</html>

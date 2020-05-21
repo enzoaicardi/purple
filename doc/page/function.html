@@ -1,0 +1,179 @@
+<!-- EN TETE -->
+
+<h1>FUNCTION | FUNC</h1>
+
+<dfn>Function est une méthode de la fonction pps qui permet de renseigner une fonction.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>function: (item, params)=>{ /* contenu de la fonction */ }</code>
+
+<p>La méthode function ne prend qu'un seul argument de type function, cette fonction sera alors
+intégrée dans la queue.</p>
+
+<h2>Fonction de rappel</h2>
+
+<p>La fonction spécifiée est en réalité une fonction de rappel prennant deux arguments,
+le premier argument reverra le premier objet de la liste des éléments selectionnés avec le selecteur,
+le deuxième renverra tout les paramètres de la queue en cours de lecture.</p>
+
+<p>La fonction de rappel peut être une fonction nommée, dans ce cas son appel se fera sans les paranthèses.</p>
+
+<code>
+    function myFunction(item, params){ /* contenu de la fonction */ }°r
+    
+    function: myFunction
+</code>
+
+<p>La fonction passée en argument peut être de type Asynchrone, dans ce cas elle sera attendue
+(await), cela peut être utile pour faire des appels API ou des fonctions
+asynchrones qui nécessitent d'êtres attendues avant d'éxecuter la suite du code.</p>
+
+<div class="tab">
+
+    <h3>Item</h3>
+
+    <code>
+        pps({
+            °st$: {°st
+                $: 'elements',°r
+                min: 3
+            °et}°r
+            start: 5,°r
+            interval: 200,°r
+            function: (item, params) => {  item.style.backgroundColor = 'aqua';  }
+            °et
+        });
+    </code>
+
+    <p>Dans l'exemple ci-dessus l'argument item renverra le premier élément du sélecteur et sera donc
+    affecté par min, cependant function ne prend pas en compte les paramètres de position comme start, shift
+    ou propagation, à l'inverse de <a href="doc/?page=foreach">foreach</a>.</p>
+
+
+    <h3>Params</h3>
+
+    <p>Params renvoie l'ensemble des paramètres à cette étape précise de la queue. Chaque paramètre
+    est accessible via la méthode du même nom.</p>
+
+    <code>
+        pps({
+            °st
+            function: (item, params) => {°r
+            °st°r
+                params.start -> start°r
+                params.frequence -> frequence°r
+                params.propagation -> propagation°r
+                params.interval -> interval°r
+                params.wait -> wait°r
+                params.reset -> reset°r
+                ...
+            °et°r
+            }
+            °et
+        });
+    </code>
+
+    <div class="tab">
+
+        <h4>Lecture</h4>
+
+        <p>L'objet params est un clone du contexte actuel, il peut être utilisé dans des conditions,
+        par exemple pour vérifier la valeur d'un paramètre.</p>
+
+        <code>
+            let increment = 0;°r°r
+            pps({
+                °st
+                function: (item, params) => {
+                °st
+                    if (params.start > 2) {°st
+                        increment++;°r
+                        /* increment = 1 */
+                    °et
+                    }
+                °et
+                }
+                °et
+            });
+        </code>
+
+        <h4>Modification du clone</h4>
+
+        <p>L'objet params est un clone du contexte actuel, il peut être modifié mais cela n'influra pas
+        sur les valeurs réelles des différents paramètres. Seul le clone sera modifié et pour cette
+        fonction uniquement.</p>
+
+        <code>
+            pps({
+                °st
+                interval: 1000,°r
+                function: (item, params) => {
+                °st
+                    params.interval = 500;°r
+                    /* params.interval devient 500 */°r
+                    /* mais interval: reste toujours à 1000 */
+                °et
+                }
+                °et
+            });
+        </code>
+
+        <p>Si un des paramètres était modifié pendant la fonction son changement ne s'appliquerait
+        qu'à la fin de celle-ci, c'est pour cette raison que c'est impossible.</p>
+
+        <h4>Modification du paramètre</h4>
+
+        <p>Pour modifier la valeur d'un paramère depuis une fonction il suffit d'avoir recours aux
+        variables.</p>
+
+        <code>
+            /* On commence par définir la variable value */°r
+            let value = 1000;°r°r
+
+            pps({
+                °st
+                /* on ajoute un interval dont la valeur est celle de notre variable */°r
+                interval: value,°r°r
+                function: (item, params) => {
+                °st
+                    if (params.value === 1000) {°st
+                        /* on change la valeur de notre variable */°r
+                        value = 2000;
+                    °et
+                    }
+                °et
+                },°r°r
+
+                /* on définit ensuite l'interval avec la nouvelle valeur */°r
+                /* il prendra effet pour les fonctions et méthodes suivantes */°r
+                intv: value
+                °et
+            });
+        </code>
+
+        <p>Pour des raisons de simplicité on utilise ici les deux notations possibles de la
+        méthode interval (interval | intv) au lieu d'ouvrir une nouvelle queue. En spécifiant dans la
+        même queue deux notations identiques nous obtiendrions une erreur conformément à la syntaxe des
+        objets javascript. Bien que fonctionnant de la même manière que deux queues, l'utilisation
+        récurrente de cette méthode peut rendre le code peu lisible</p>
+
+        <p>Il est néanmoins possible d'utiliser d'autres notations (voir <a href="doc/?page=queue">queue</a>).</p>
+
+    </div>
+
+</div>
+
+<!-- FIN -->

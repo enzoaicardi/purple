@@ -1,0 +1,301 @@
+<!-- EN TETE -->
+
+<h1>OBSERVER | INTERSECTION | OBS</h1>
+
+<dfn>Observer est une méthode de la fonction pps qui permet d'observer les intersections entre
+deux éléments.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    pps({
+        °stobserver: {
+            °st
+            container: 'selector' || HTMLElement,°r
+            func: ()=>{ ... },°r
+            margin: '0px',°r
+            visibility: 0.6 || '60%',°r
+            side: 'top' || 'bottom' || 'left' || 'right' || 'y' || 'x' || 'all',°r
+            once: false
+            °et
+        }°et
+    });
+</code>
+
+<p>La méthode observer permet d'observer les intersections entre deux éléments.</p>
+
+<p>Les éléments observés sont ceux définis par le <a href="doc/?page=selector">selecteur</a>.</p>
+
+<h2>Paramètres</h2>
+
+<p>La méthode observer prend un ensemble de paramètres comme argument.</p>
+
+<div class="tab">
+
+    <h3>Container</h3>
+
+    <p>Le paramètre container permet de définir l'élément qui servira de zone d'affichage,
+    il doit impérativement être parent des éléments observés.</p>
+
+    <code>
+        pps({
+            °stobserver: {
+                °st
+                container: 'selector' || HTMLElement
+                °et
+            }°et
+        });
+    </code>
+
+    <div class="tab">
+
+        <h4>Type String</h4>
+
+        <p>Le container peut être de type string, ainsi l'élément sélectionné sera similaire
+        à l'utilisation de querySelector.</p>
+
+        <code>
+            pps({
+                °stobserver: {
+                    °st
+                    container: 'selector' /* = document.querySelector('selector'); */
+                    °et
+                }°et
+            });
+        </code>
+
+        <h4>Type HTMLElement</h4>
+
+        <p>Le container peut être une instance de HTMLElement, ainsi l'élément sélectionné
+        sera l'élément renseigné.</p>
+
+        <code>
+            let elem = document.querySelector('selector');°r°r
+            pps({
+                °stobserver: {
+                    °st
+                    container: elem
+                    °et
+                }°et
+            });
+        </code>
+
+    </div>
+
+    <h3>Func</h3>
+
+    <p>Le paramètre func permet de déterminer la fonction qui sera exécutée lorsque
+    l'événement se produit.</p>
+
+    <code>
+        pps({
+            °stobserver: {
+                °st
+                /* quand l'intersection se déroulera on exécutera la fonction suivante */°r
+                func: ()=>{ ... }
+                °et
+            }°et
+        });
+    </code>
+
+    <p>La fontion précisée est alors une fonction de rappel qui renvoie trois arguments :</p>
+
+    <div class="tab">
+
+        <h4>Entry</h4>
+
+        <p>Entry renverra les entrées de l'observeur. Vous pouvez les retrouver
+        <a href="https://developer.mozilla.org/fr/docs/Web/API/IntersectionObserverEntry">sur cette page</a>.</p>
+
+        <code>
+            pps({
+                °stobserver: {
+                    °st
+                    /* quand l'intersection se déroulera on exécutera la fonction suivante */°r
+                    func: (entry)=>{°st
+                        /* retourne la position de l'élément cible par rapport au viewport comme getBoundingClientRect() */°r
+                        entry.boundingClientRect;°r
+                        /* retourne la taille de la partie visible de l'élément cible */°r
+                        entry.intersectionRect;°r
+                        /* retourne le ratio de l'intersectionRect au boundingClientRect */°r
+                        entry.intersectionRatio;°r
+                        /* retourne une valeur booléenne valant true si l'élément cible s'entrecoupe avec la zone d'intersection de l'élément racine */°r
+                        entry.isIntersecting;°r
+                        /* retourne l'élément observé */°r
+                        entry.target;°r
+                        /* Un DOMHighResTimeStamp indiquant l'instant auquel l'intersection a été enregistrée, relative au temps originel de l'IntersectionObserver */°r
+                        entry.time;
+                    °et}
+                    °et
+                }°et
+            });
+        </code>
+
+        <h4>Item</h4>
+
+        <p>Item renverra l'élément auquel est attaché l'observeur et toutes les propriétés qui
+        l'accompagnent.</p>
+
+        <code>
+            pps({
+                °stobserver: {
+                    °st
+                    /* quand l'intersection se déroulera on exécutera la fonction suivante */°r
+                    func: (entry, item)=>{ item.backgroundColor = 'red'; }
+                    °et
+                }°et
+            });
+        </code>
+
+        <h4>Params</h4>
+
+        <p>Params renvoie l'ensemble des paramètres à cette étape précise de la queue.
+        Chaque paramètre est accessible via la méthode du même nom.</p>
+
+        <code>
+            pps({
+                °st
+                observer: {°st
+                func: (entry, item, params) => {°r
+                °st°r
+                    params.start -> start°r
+                    params.frequence -> frequence°r
+                    params.propagation -> propagation°r
+                    params.interval -> interval°r
+                    params.wait -> wait°r
+                    params.reset -> reset°r
+                    ...
+                °et°r
+                }
+                °et}
+                °et
+            });
+        </code>
+
+        <p>Pour en apprendre plus sur les paramètres et leur fonctionnement vous pouvez
+        regarder du côté de la méthode <a href="doc/?page=function">function</a>.</p>
+
+    </div>
+
+    <h3>Margin</h3>
+
+    <p>Le paramètre margin permet d'augmenter ou réduire la taille de la zone d'affichage définie par le
+    container (cela prend effet pour left, top, right, bottom).</p>
+
+    <code>
+        pps({
+            °stobserver: {
+                °st
+                margin: '40px 20px 20px 40px'
+                °et
+            }°et
+        });
+    </code>
+
+    <h3>Visibility</h3>
+
+    <p>Attention, évitez les ratios 1 et 0, ces ratios peuvent créer des problèmes au niveau des
+    intersections, en effet ces ratios sont à la limite entre l'intersection et la non-intersection
+    de fait ils peuvent entraîner des comportements inatendus avec l'API native javascript
+    <a href="https://developer.mozilla.org/fr/docs/Web/API/Intersection_Observer_API">IntersectionObserver</a>.</p>
+
+    <p>Il existe une autre raison de les éviter qui est la portabilité sur mobile, si votre
+    élément est suppérieur en hauteur à la hauteur du viewport, un ratio de 1 empéchera son
+    affichage. Il est préférable d'utiliser des ratios médians et de régler la marge à l'aide
+    de margin pour obtenir un rendu plus propre.</p>
+
+    <p>Le paramètre visibility permet de définir un ou plusieurs ratios pour le déclenchement
+    de l'observeur.</p>
+
+    <p>Si le ratio est de 0.5 ou '50%' alors quand 50% de l'élément sera visible la fonction
+    sera exécutée.</p>
+
+    <code>
+        pps({
+            °stobserver: {
+                °st
+                /* quand 50% de l'élément sera visible dans le container on déclenche la fonction */°r
+                visibility: 0.5
+                °et
+            }°et
+        });
+    </code>
+
+    <p>En spécifiant un tableau de ratios alors la fonction sera exécutée à chaque franchissement
+    d'un seuil de visibilité.</p>
+
+    <code>
+        pps({
+            °stobserver: {
+                °st
+                /* lorsque 25%, 50% ou 70% de l'élément est visible dans le container on déclenche la fonction */°r
+                visibility: ['25%', 0.5, 0.7]
+                °et
+            }°et
+        });
+    </code>
+
+    <h3>Side</h3>
+
+    <p>Le paramètre side permet de définir le côté du container qui sera observé (par défaut
+    bottom).</p>
+
+    <p>Les quatres possibilités correspondant aux quatres côtés du container sont : top, bottom,
+    left et right. Mais il est possible de sélectionner les côtés top et bottom avec 'y' et les côtés
+    left et right avec 'x'. Pour sélectionner tous les côtés utilisez 'all'.</p>
+
+    <code>
+        pps({
+            °stobserver: {
+                °st
+                /* quand l'intersection se déroulera sur le sommet du container on déclenchera la fonction */°r
+                side: 'top'
+                °et
+            }°et
+        });
+    </code>
+
+    <p>Mais il est aussi possible de faire des combinaisons :</p>
+
+    <code>
+        pps({
+            °stobserver: {
+                °st
+                side: 'top bottom x'
+                °et
+            }°et
+        });
+    </code>
+
+    <h3>Once</h3>
+
+    <p>Le paramètre once permet de déterminer si l'observeur doit être détaché après son
+    déclenchement. Ainsi la fontion ne s'exécutera qu'une seule fois.</p>
+
+    <code>
+        pps({
+            °stobserver: {
+                °st
+                /* quand l'intersection se déroulera supprimera l'observeur */°r
+                once: true
+                °et
+            }°et
+        });
+    </code>
+
+</div>
+
+
+<!-- FIN -->

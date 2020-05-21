@@ -1,0 +1,285 @@
+<!-- EN TETE -->
+
+<h1>QUEUE - DIDACTICIEL</h1>
+
+<dfn>PurpleSand fonctionne selon une logique de queue, c'est cette logique que nous allons
+expliquer ici.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Initiation</h2>
+
+<p>Chaque initiation de la fonction pps() appelle une queue de manière asynchrone, c'est à dire
+que cette fonction est non bloquante.</p>
+
+<code>pps(queue);</code>
+
+<p>Chaque queue est donc indépendante et s'execute de manière asynchrone. Ainsi dans
+l'exemple suivant les deux fonctions pps s'executeront en même temps (pas réellement
+mais les oppérations seront mélangées).</p>
+
+<code>
+    /* Les deux queues s'executent en même temps */°r
+    pps(queue1);°r
+    pps(queue2);
+</code>
+
+<h2>Qu'est-ce qu'une queue</h2>
+
+<p>Une queue est en réalité un objet javascript, il prend donc la forme suivante :</p>
+
+<code>pps({key: 'value', key: 'value' ...});</code>
+
+<p>Qu'il est possible de rendre plus présentable de cette manière :</p>
+
+<code>
+pps({°st
+    key_name: 'value',°r
+    key_name: 'value'°r 
+    ...
+°et});
+</code>
+
+<p>Une queue est donc une suite de méthodes avec des noms spécifiques (vous les retrouverez
+dans le reste de la documentation).</p>
+
+<h2>Notation</h2>
+
+<p>Comme dit précédemment les queues sont des objets javascript, ainsi il n'est pas possible
+d'avoir deux clés du même nom dans une même queue. Il existe alors plusieurs solutions.</p>
+
+<div class="tab">
+
+    <h3>Créer une nouvelle queue</h3>
+
+    <p>En créant simplement une nouvelle queue il est possible de saisir la clé sous le
+    même nom.</p>
+
+    <code>
+        pps({°st
+                key_name: 'value'
+            °et},°r
+            {°st
+                key_name: 'value'
+        °et});
+    </code>
+
+    <h3>Utiliser la notation alternative</h3>
+
+    <p>Chaque méthode possède plusieurs types de notation, cela permet d'utiliser la même
+    méthode plusieurs fois dans la même queue.</p>
+
+    <code>
+        pps({°st
+            interval: 1000,°r
+            intv: 200°r 
+            ...
+        °et});
+    </code>
+
+    <h3>Utiliser la notation variable</h3>
+
+    <p>Chaque nom de méthode est variable, il est possible de rajouter un id de 0 à 999 pour
+    chaque nom de méthode, même les noms variables. cela permet d'utiliser la même
+    méthode plusieurs fois dans la même queue.</p>
+
+    <code>
+        pps({°st
+            interval_0: 1000,°r
+            interval_1: 200,°r
+            interval_2: 500°r 
+            ...
+        °et});
+    </code>
+
+</div>
+
+<h2>Fonctionnement</h2>
+
+<p>Les méthodes à l'intérieur d'une queue sont lues dans leur ordre d'apparition.</p>
+
+<code>
+    pps({°st
+        /* on execute la méthode 1 */°r
+        methode_1: ...,°r
+        /* on attend que la méthode 1 soit terminée */°r
+        /* -> puis on execute la méthode 2 */°r
+        methode_2: ...°r 
+        ...
+    °et});
+</code>
+
+<p>Si vous êtes familiers avec les promesses javascript l'exemple suivant sera plus parlant :</p>
+
+<code>
+    async function pps({°st
+        await methode_1: ...,°r
+        await methode_2: ...°r 
+        ...
+    °et});
+</code>
+
+<p>Dans une queue chaque méthode est executée à la fin de la précédente, de fait
+une méthode va affecter tout les éléments avant de se terminer.</p>
+
+<p>Ainsi dans l'exemple suivant chaque élément verra sa couleur de fond
+devenir rouge, et une fois seulement que tout les éléments auront le fond rouge alors
+la méthode 2 s'executera.</p>
+
+<code>
+    pps({°st
+        methode_1: 'background -> red',°r
+        methode_2: 'background -> green'°r 
+        ...
+    °et});
+</code>
+
+<p>Pour executer deux méthodes différentes sur les éléments un à un il est
+nécessaire d'utiliser la méthode <a href="doc/?page=foreach">foreach</a> et l'imbriquation
+des queues.</p>
+
+<h2>Multiples queues</h2>
+
+<p>Comme dit précédemment les queues sont des objets javascript, et il est possible
+d'en utiliser plusieurs au sein d'une même fonction pps. La syntaxe globale ne change pas.</p>
+
+<code>pps( {queue1}, {queue2}, {queue3}, ... );</code>
+
+<p>Avec plusieurs queues chacune sera executée à la fin de la précédente, comme pour
+les méthodes.</p>
+
+<p>Ainsi :</p>
+
+<code>
+    pps(°st{°st
+            methode_1: 'background -> red'
+        °et},°r
+        {°st
+            methode_2: 'background -> green'
+    °et}°et);
+</code>
+
+<p>Est équivalent à :</p>
+
+<code>
+    pps({°st
+        methode_1: 'background -> red',°r
+        methode_2: 'background -> green'
+    °et});
+</code>
+
+<p>Cependant en passant d'une queue à l'autre les méthodes globales sont remises à leur
+valeur d'origine comme dans l'exemple suivant.</p>
+
+<p>* Sauf indication contraire la remise par défaut des méthodes globales n'inclue pas reset
+et le selecteur.</p>
+
+<code>
+    pps(°st{°st
+            /* on fixe l'interval à 1000ms */°r
+            interval_0: 1000,°r
+            methode_1: 'background -> red',°r
+            /* on le change à nouveau pour 500ms */°r
+            interval_1: 500
+        °et},°r
+        {°st
+            /* les méthodes globales retournent à leur valeur par défaut */°r
+            /* l'interval est donc de 0ms */°r
+            methode_2: 'background -> green'
+        °et}°et);
+</code>
+
+<p>Pour palier ce problème il est possible d'utiliser la méthode <a href="doc/?page=reset">reset</a> avec la valeur
+false, cependant cela peut aussi affecter les boucles foreach et changer
+leur comportement, pour plus d'informations consultez la page de la méthode
+<a href="doc/?page=foreach">foreach</a>.</p>
+
+<h2>Queue foreach</h2>
+
+<p>A l'inverse des queues classiques, l'utilisation de la méthode <a href="doc/?page=foreach">foreach</a>
+comme ensemble de méthodes initie des queues dites imbriquées, cela entraine 
+un retour aux valeurs par défaut pour la méthode foreach mais pas pour le reste de la queue.</p>
+
+<code>
+    pps({°st
+            /* on fixe l'interval à 1000ms */°r
+            interval: 1000,°r
+            methode_1: 'background -> red',°r
+            /* on utilise la méthode foreach -> reset*/°r
+            foreach: {°st
+                /* les méthodes globales retournent à leur valeur par défaut */°r
+                /* mais uniquement pour cette méthode foreach */
+            °et},°r
+            /* l'interval est donc de 1000ms */°r
+            methode_2: 'background -> green'
+        °et});
+</code>
+
+<p>Pour que les valeurs des méthodes globales soient préservées au sein de la méthode
+foreach (ce qui peut être utile dans le cas d'une imbrication) il est nécéssaire de 
+définir la méthode <a href="doc/?page=reset">reset</a> à false ou de redéfinir tous les paramètres au sein de la
+méthode foreach, à la fin de la méthode les paramètres seront de nouveaux ceux de la
+boucle principale (y compris reset et le selecteur).</p>
+
+<h2>Contexte</h2>
+
+<p>Les queues principales de la fonction pps utilisent le contexte du constructeur, c'est
+à dire que les paramètres définis avec les méthodes globales peuvent y être modifiés avec
+une portée globale.</p>
+
+<code>
+    pps(°st
+        /* création d'un contexte global propre à cette fonction pps */°r
+        {°st
+            /* définit le context.interval à 1000ms */°r
+            interval: 1000,°r
+            /* pour éviter une remise à zéro du contexte on utilise reset: false */°r
+            reset: false
+        °et},°r
+        {°st
+            /* on retrouve dans cette queue le même contexte global */
+        °et}
+    °et);
+</code>
+
+<p>Ce qui n'est pas le cas pour les boucles imbriquées générées par la méthode foreach,
+chaque méthode foreach va créer un clone du contexte global dans lequel elle se
+trouve. Ce clone peut être modifié mais n'interfére pas avec les queues primaires.</p>
+
+<code>
+    pps(°st
+        /* création d'un contexte global (this) propre à cette fonction pps */°r
+        {°st
+            /* définit le context.interval à 1000ms */°r
+            interval: 1000,°r
+            /* pour éviter une remise à zéro du contexte on utilise reset: false */°r
+            reset: false,°r°r
+
+            foreach: {°st
+                /* on clone le contexte global -> clone.interval = 1000ms */°r
+                interval: 200,°r
+                /* clone.interval = 200ms */°r
+                /* mais context.interval = 1000ms */
+            °et},°r°r
+            /* l'interval reste donc de 1000ms */°r
+            methode: 'background -> green'
+        °et}
+    °et);
+</code>
+
+<p>Dans le cas d'une méthode foreach imbriquée dans une autre méthode foreach alors le
+clone sera simplement cloné à son tour (avec les modifications qui lui auront étés
+apportées) et utilisé dans la nouvelle foreach, n'interférant pas avec la foreach
+englobante ni le contexte global.</p>
+
+<!-- FIN -->

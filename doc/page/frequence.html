@@ -1,0 +1,70 @@
+<!-- EN TETE -->
+
+<h1>FREQUENCE | FREQ (global)</h1>
+
+<dfn>Frequence est une méthode de la fonction pps qui permet de déterminer la frequence de sélection des éléments.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    frequence: 1 | 'string'
+</code>
+
+<p>La méthode frequence ne prend qu'un seul argument pouvant être de différents types et qui
+détermine la frequence de sélection des éléments.</p>
+
+<p>Toutes les méthodes non-globales, c'est à dire qui font références aux éléments plutôt qu'au contexte, sont affectées.</p>
+
+<h2>Arguments</h2>
+
+<p>La méthode frequence peut prendre des arguments de plusieurs types différents.</p>
+
+<div class="tab">
+
+    <h3>Type Number</h3>
+
+    <p>Avec une fréquence de 2, un élément sur deux sera affecté par les méthodes non-globales.</p>
+
+    <code>
+        pps({
+            °st$: {
+                °st$: 'elements',°r°et
+            },°et
+            °stfrequence: 2°et
+        });
+    </code>
+
+    <p>La méthode frequence ne doit pas être confondue avec le paramètre freq du <a href="doc/?page=selector">sélecteur</a>.</p>
+
+
+    <h3>Type Percentage</h3>
+
+    <p>La fréquence peut être indiquée sous la forme d'un pourcentage, ce dernier renvoie
+    un index qui servira de nombre de référence, voir Min et Max du <a href="doc/?page=selector">sélecteur</a>.</p>
+
+    <code>
+        pps({
+            °st$: {
+                °st$: 'elements',°r°et
+            },°et
+            °stfrequence: '20%'°r
+            /* pour une liste de 10 éléments, un élément sur 2 sera sélectionné */°et
+        });
+    </code>
+
+</div>
+
+
+<!-- FIN -->

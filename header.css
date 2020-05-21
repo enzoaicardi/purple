@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+/* bloc structurel & charte graphique */
+
+:root{
+
+    /* base font */
+    --title-font: 'Fredoka One';
+    --text-font: 'Roboto Condensed';
+    --code-font: 'Consolas';
+
+    font-family: var(--text-font);
+
+    /* widths */
+    --main-max-width: 1080px;
+
+    /* vars */
+
+    /* couleurs de background */
+    --background-color: #222222;
+    --code-color: #111111;
+
+    /* charte des couleurs (a partir du logo) */
+    --purple: #9c4edb;
+    --sand: #f4aa29;
+
+    --p-color: #727272;
+    --th-color: #bdbdbd17;
+
+    /* couleurs du code */
+    --code-base: rgb(136, 192, 238);
+    --code-number: rgb(153, 216, 153);
+    --code-string: rgb(187, 147, 102);
+    --code-comment: #727272;
+    --code-opp: rgb(204, 204, 204);
+    --code-reserved: rgb(88, 112, 179);
+    --code-func: rgb(233, 231, 111);
+    --code-api: rgb(84, 180, 132);
+    --code-keyword: rgb(187, 115, 171);
+    --code-balise: #727272;
+    --code-text: rgb(255, 255, 255);
+
+    /* les thèmes transitions (tt) */
+    --tt-background: background-color 500ms linear 0ms;
+
+}
+
+p, dfn, a, code, code > span, code div > span{
+    transition: color 500ms linear 0ms;
+}
+
+*{
+    outline: none;
+
+    transition: var(--tt-background);
+}
+
+body{
+
+    margin: 0;
+
+    background-color: var(--background-color);
+
+}
+
+/* thèmes : sombre / clair */
+.light{
+
+    /* couleurs de background */
+    --background-color: #2a2036;
+    --code-color: #1a1320;
+
+    /* autres couleurs */
+    --p-color: #deacff;
+    --th-color: #d470dd17;
+
+
+    /* couleurs du code */
+    --code-base: rgb(255, 159, 159);
+    --code-number: rgb(185, 206, 90);
+    --code-string: rgb(255, 205, 66);
+    --code-comment: #727272;
+    --code-opp: rgb(219, 126, 50);
+    --code-reserved: rgb(141, 76, 76);
+    --code-func: rgb(255, 225, 225);
+    --code-api: rgb(201, 74, 74);
+    --code-keyword: rgb(201, 74, 74);
+    --code-balise: rgb(102, 42, 62);
+
+}
+
+
+/* --- STYLE DE LA PAGE --- */
+
+main{
+
+    width: 100%;
+    min-height: 100vh;
+
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+/* HEADER */
+
+header{
+
+    width: 100%;
+    height: 60px;
+
+    max-width: var(--main-max-width);
+
+    margin: 0;
+
+}
+
+.fixed_header{
+
+    width: inherit;
+    max-width: 100vw;
+    height: inherit;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+    /* MENU LEFT/RIGHT PART */
+    
+    header .menu_left{
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+    }
+
+    header .menu_right{
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+    }
+
+    /* MENU PART > INSIDE */
+
+        /* menu left */
+
+        .menu_left svg, .menu_left use{
+
+            width: 54px;
+            height: 30px;
+
+        }
+
+        .menu_left .pps-complete, .menu_left .pps-reduce{
+
+            text-decoration: none;
+            font-family: var(--title-font);
+            font-size: 22px;
+
+            color: var(--purple);
+
+            margin-left: 10px;
+
+        }
+
+        .menu_left span{
+
+            color: var(--sand);
+            
+        }
+
+        .menu_left .pps-version{
+
+            height: 20px;
+            margin-left: 6px;
+            
+            text-decoration: none;
+            line-height: 28px;
+            font-size: 12px;
+            color: var(--p-color);
+
+        }
+
+        /* menu right */
+
+        .menu_right a{
+
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+
+            margin-right: 14px;
+
+            font-size: 16px;
+            text-decoration: none;
+            color: var(--sand);
+
+            border-top: 2px solid var(--purple);
+
+        }
+
+        .menu_right .theme_choice{
+
+            width: 54px;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+            .theme_choice div{
+
+                cursor: pointer;
+
+                width: 18px;
+                height: 18px;
+
+                border-radius: 50%;
+                box-sizing: unset;
+
+            }
+
+            .theme_choice .theme_dark{
+
+                background-color: #383838;
+                border: 2px solid transparent;
+
+            }
+
+            .theme_choice .theme_light{
+
+                background-color: #edddff;
+                border: 2px solid transparent;
+
+            }
+
+            .dark .theme_choice .theme_dark{
+
+                background-color: #383838;
+                border: 2px solid var(--purple);
+
+            }
+
+            .light .theme_choice .theme_light{
+
+                background-color: #edddff;
+                border: 2px solid var(--purple);
+
+            }
+
+/* footer */
+
+footer{
+
+    width: 100%;
+    height: 60px;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+footer > section{
+
+    height: 60px;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: var(--main-max-width);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    box-sizing: border-box;
+
+}
+
+footer > section a{
+
+    color: var(--p-color);
+    text-decoration: none;
+
+}
+
+footer > section svg{
+    fill: var(--p-color);
+    width: 22px;
+    height: 22px;
+}
+
+/* TOP/BOTTOM MARGIN BLOCK */
+
+/* utile en cas de position fixed header */
+.top_margin{
+
+    width: 100%;
+    height: 40px;
+
+}
+
+/* media queries */
+
+.pps-reduce{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+
+    .section_doc .body_doc{
+        width: 100vw;
+    }
+
+    .pps-complete{
+        display: none;
+    }
+
+    .pps-reduce{
+        display: block;
+    }
+  
+}
+
+@media screen and (max-width: 460px) {
+
+    .menu_right .theme_choice{
+        display: none;
+    }
+
+    .pps-version{
+        display: none;
+    }
+  
+}
+
+@media screen and (max-width: 400px) {
+
+    .menu_right .theme_choice{
+        display: flex;
+    }
+
+    .pps-integrer{
+        display: none;
+    }
+  
+}
+
+@media screen and (max-width: 350px) {
+
+    .pps-documentation{
+        display: none;
+    }
+  
+}
+
+/* Code */
+
+code{
+
+    align-self: flex-start;
+
+    display: block;
+    /* flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch; */
+
+    max-width: 100%;
+    box-sizing: border-box;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 8px;
+    padding-left: 8px;
+
+    text-align: left;
+    font-family: var(--code-font);
+    color: var(--code-base);
+    word-wrap: break-word;
+
+    background-color: var(--code-color);
+
+}
+
+    /* format de code */
+    code > .number, code div > .number      {  color: var(--code-number);  }
+    code > .string, code div > .string      {  color: var(--code-string);  }
+    code > .comment, code div > .comment    {  color: var(--code-comment);  }
+    code > .opp, code div > .opp            {  color: var(--code-opp);  }
+    code > .reserved, code div > .reserved  {  color: var(--code-reserved);  }
+    code > .func, code div > .func          {  color: var(--code-func);  }
+    code > .api, code div > .api            {  color: var(--code-api);  }
+    code > .keyword, code div > .keyword    {  color: var(--code-keyword);  }
+    code > .balise, code div > .balise      {  color: var(--code-balise);  }
+    code > .text, code div > .text          {  color: var(--code-text);  }
+
+
+/* global tab class */
+.tab{
+
+    align-self: stretch;
+    margin-left: 20px;
+
+    display: inherit;
+    justify-content: inherit;
+    flex-direction: inherit;
+    align-items: inherit;
+    
+}
+
+.tab2{
+
+    align-self: stretch;
+    margin-left: 40px;
+
+    display: inherit;
+    justify-content: inherit;
+    flex-direction: inherit;
+    align-items: inherit;
+
+}

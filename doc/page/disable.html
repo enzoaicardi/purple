@@ -1,0 +1,67 @@
+<!-- EN TETE -->
+
+<h1>DISABLE</h1>
+
+<dfn>Disable est une méthode de la fonction pps qui permet désactiver une portion de queue.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    disable: true | false
+</code>
+
+<p>La méthode disable ne prend qu'un seul argument de type boolean.
+Si ce dernier vaut true alors la portion de queue dans laquelle disable est utilisée sera
+désactivée.</p>
+
+<code>
+    pps({°st
+        disable: true°r
+        /* cette queue est désactivée */°r
+        /* on le la lit pas, on passe directement à la suivante */
+    °et},°r
+    {°st
+        css: ...°r
+        /* cette queue est active */
+    °et});
+</code>
+
+<p>Si disable est spécifiée dans la queue principale alors c'est tout la queue qui sera désactivée.
+Mais si disable est spécifié dans une portion comme <a href="doc/?page=if">if</a> ou
+<a href="doc/?page=foreach">foreach</a> alors seule la portion sera désactivée.</p>
+
+<code>
+    pps({°st
+        foreach: {°st
+            /* cette queue foreach est désactivée */°r
+            disable: true
+        °et}°r
+        /* mais la queue est active */°r
+        css: ...
+    °et},°r
+    {°st
+        if: { condition: ... °st
+            /* cette portion if est désactivée */°r
+            disable: true
+        °et}°r
+        /* mais la queue est active */°r
+        css: ...°r
+    °et});
+</code>
+
+<p>Disable peut s'avérer utile pour le débogage.</p>
+
+
+<!-- FIN -->

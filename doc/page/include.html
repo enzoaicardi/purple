@@ -1,0 +1,84 @@
+<!-- EN TETE -->
+
+<h1>INCLUDE | LOAD</h1>
+
+<dfn>Include est une méthode de la fonction pps qui permet d'inclure un fichier dans un élément.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    include: 'file-URL'
+</code>
+
+<p>Include permet d'inclure un fichier dans un élément à partir de son URL.</p>
+
+<h2>Argument</h2>
+
+<p>La méthode include ne prend qu'un seul argument de type string ou array.</p>
+
+<div class="tab">
+
+    <h3>String</h3>
+
+    <p>Il s'agit de l'URL du fichier que l'on souhaite inclure dans les éléments sélectionnés
+    via le <a href="doc/?page=selector">sélecteur</a>. Le contenu des éléments est alors remplacé
+    par le nouveau contenu.</p>
+
+    <code>
+        pps({°st
+
+            $: 'elements',°r
+            include: 'file-URL.html'
+
+        °et});
+    </code>
+
+    <h3>Array</h3>
+
+    <p>Il est possible de spécifier un tableau comme argument de la manière qui suit :</p>
+
+    <code>
+        include: ['URL', {options}, (res)=>{function}]°r
+        /* ou ... */°r
+        include: ['URL', (res)=>{function}]
+    </code>
+
+    <div class="tab">
+
+        <h4>URL</h4>
+
+        <p>Il s'agit du chemin pour accéder au fichier.</p>
+
+        <h4>Options</h4>
+
+        <p>Il s'agit des options de <a href="https://developer.mozilla.org/fr/docs/Web/API/WindowOrWorkerGlobalScope/fetch">l'API Fetch</a>.</p>
+
+        <h4>Fonction</h4>
+
+        <p>Spécifier une fonction permet de modifier le résultat de la requête.
+        La fontion doit contenir un seul argument qui correspond au résultat de la requête.
+        Une fois le résultat modifié il est impératif de le retourner avec l'instruction
+        return.</p>
+
+        <code>
+            include: ['URL', (res)=>{return res.replace('something', 'other');}]
+        </code>
+
+    </div>
+
+</div>
+
+
+<!-- FIN -->

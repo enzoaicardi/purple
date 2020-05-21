@@ -1,0 +1,299 @@
+<!-- EN TETE -->
+
+<h1>CSS ! DEPRECIATE</h1>
+
+<dfn>Css est aujourd'hui dépreciée, nous vous conseillons d'utiliser anime qui utilise
+    les écouteurs d'événements 'transitionend'. Css est toutefois maintenue du fait de la
+    possible incompatibilité des événements 'transitionend' sur certains navigateurs.
+    A terme anime pourrait remplacer css en absorbant sa nomination, pour ce faire nous
+    vous conseillons de vous renseigner sur les différences entre les deux méthodes pour
+    éviter les erreurs.</dfn>
+
+<dfn>Css est une méthode qui permet de créer une animation complexe sur un ou plusieurs
+éléments du DOM. Css est capable de gérer les delais et les transitions de manière intuitive.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    css: [array]
+</code>
+
+<p>La méthode css ne prend qu'un seul argument de type array. Il s'agit d'un tableau
+d'instructions pour l'exécution de la méthode.</p>
+
+<h2>Instructions</h2>
+
+<p>Les données doivent êtres organisées et types et selon un 
+certain ordre pour être comprises par la méthode css.</p>
+
+<code>
+    [ instruction_1, instruction_2, instruction_3 ... ]
+</code>
+
+<div class="tab">
+
+    <h3>Ordre des instructions</h3>
+
+    <p>Les instructions sont de différents types :</p>
+
+    <code>
+        durée d'animation, /* number */°r
+        {propriétés: 'valeurs'}, /* object */°r
+        bézier, /* number */°r
+        mode, /* number */
+    </code>
+    
+    <p>Et leur ordre est le suivant :</p>
+
+    <code>
+        css: [°st
+            durée animation, {propriétés: 'valeurs'}, bézier, mode,°r
+            durée animation, {propriétés: 'valeurs'}, bézier, mode,°r
+            ...
+        °et]
+    </code>
+
+    <p>Les instructions bézier et mode ne sont pas obligatoires, la valeur de bézier est par
+    défaut 'linear' tandis que pour le mode sa valeur est 'delay'. Voir la section ci-dessous
+    pour plus d'informations.</p>
+
+    <h3>Types d'instructions</h3>
+
+    <div class="tab">
+
+        <h4>Durée de l'animation</h4>
+
+        <p>La durée de l'animation doit être un nombre qui détermine la durée de
+        l'animation qui suit en millisecondes.</p>
+
+        <code>
+            css: [°st
+                /* la durée de animation_1 est de 1000ms */°r
+                1000, {animation_1} ...,°r
+                /* la durée de animation_2 est de 500ms */°r
+                500, {animation_2} ...
+            °et]
+        </code>
+
+        <p>Cette durée d'animation est aussi le delais avant le déclenchement de l'animation
+        suivante, sauf si le mode 'no-delay' est actif.</p>
+
+        <h4>Propriétés et valeurs</h4>
+
+        <p>Les propriétés et leurs nouvelles valeurs sont spécifiées au sein d'un objet,
+        le nom des propriétés est équivalent à celui utilisé par la méthode style en javascript.</p>
+
+        <code>
+            css: [°st
+                /* les propriétés changées sont backgroundColor et transform */°r
+                1000, {backgroundColor: 'red', transform: 'rotate(45deg)'} ...°r
+                /* la durée de l'animation de ces propriétés est de 1000ms */
+            °et]
+        </code>
+
+        <h4>Bézier</h4>
+
+        <p>Bézier correspond en css à <a href="https://developer.mozilla.org/fr/docs/Web/CSS/transition-timing-function">transition-timing-function</a>
+        et peut donc prendre exactement les mêmes paramètres comme 'linear', 'ease'... ou des courbes
+        de bézier <a href="https://cubic-bezier.com/#.17,.67,.83,.67">personnalisées</a>.</p>
+
+        <p>Vous pouvez retrouver des courbes personnalisées avec des effets variés sur
+        <a href="https://easings.net/fr">cette page</a>.</p>
+
+        <p>La méthode css dispose aussi de ses propres béziers personnalisées que vous pouvez
+        retrouver sur <a href="doc/beziers.html">cette page</a>.</p>
+
+        <p><a href="curve/index.html">Voir notre outil de création de courbes de bézier</a></p>
+
+        <code>
+            css: [°st
+                /* l'effet de transition sera 'ease' */°r
+                1000, {backgroundColor: 'red', transform: 'rotate(45deg)'}, 'ease' ...
+            °et]
+        </code>
+
+        <h4>Mode</h4>
+
+        <p>Le mode permet de déterminer si l'animation en cours envoie un délais ou non avant
+        l'exécution des autres animations. Par défaut les animations envoient ce delais, ce qui
+        permet de les exécuter les unes à la suite des autres. Cependant pour qu'une animation
+        n'envoie pas de délais il est possible de spécifier le mode à 'no-delay' ou 'nd'.</p>
+
+        <p>Cela permet par exemple de réaliser plusieurs effets en même temps avec des durées
+        d'animation et des courbes de bézier différentes.</p>
+
+        <code>
+            css: [°st
+                1000, {backgroundColor: 'red'}, 'ease', 'no-delay',°r
+                /* backgroundColor n'envoie pas de délais et donc transform s'éxecutera en même temps */°r
+                500, {transform: 'rotate(45deg)'}, 'linear' ...°r
+                /* transform envoie un délais de 500ms avant l'exécution des autres animations */
+
+            °et]
+        </code>
+
+        <p>Comme nous le montre l'exemple ci-dessus la propriété backgroundColor ne sera
+        finie d'être animée avant le déclenchement des autres fonctions car le délais envoyé est de
+        500ms et non de 1000ms.</p>
+
+        <p>Une solution peut être de changer l'ordre des animations, ou alors d'ajouter un délais manuel.</p>
+
+        <code>
+            css: [°st
+                500, {transform: 'rotate(45deg)'}, 'linear', 'no-delay',°r
+                /* transform n'envoie pas de délais et donc backgroundColor s'éxecutera en même temps */°r
+                1000, {backgroundColor: 'red'}, 'ease', ...°r
+                /* backgroundColor envoie un délais de 1000ms avant l'exécution des autres animations */
+            °et]
+        </code>
+
+        <p>Sauf pour indiquer que l'animation s'execute sans envoyer de délais il est inutile de préciser le mode.</p>
+
+        <h4>Espaces de calculs</h4>
+
+        <p>Les valeurs des propriétés ainsi que les durées d'animation peuvent contenir des espaces de
+        calculs, ces espaces de calculs sont définit par des accolades.</p>
+
+        <code>
+            css: [°st
+                1000, {transform: 'translateX({4+8}px)'}°r
+                /* 4 + 8 = 12px */
+            °et]
+        </code>
+
+        <p>Pour la durée d'animation il n'est possible de spécifier qu'un seul espace de
+        calcul.</p>
+
+        <code>
+            css: [°st
+                '{40+80}', {transform: 'translateX(20px)'}°r
+                /* 40 + 80 = 120ms */
+            °et]
+        </code>
+
+        <p>Les espaces de calculs peuvent méler des calculs complexes avec des variables
+        et itérateurs pps.</p>
+
+        <code>
+            css: [°st
+                1000, {transform: 'translateX({4+(8^(5-myvar))}px)'}°r
+                /* exemple d'un calcul complexe avec des variables */
+            °et]
+        </code>
+
+        <p>Il est important de préciser que PurpleSand n'a jamais recours à la fonction eval() de
+        javascript en raison des nombreuses failles de sécurité. A la place nous utilisons
+        notre propre fonction de conversion, robuste et sans faille de sécurité.</p>
+
+
+    </div>
+
+    <h3>Délais manuel</h3>
+
+    <p>Un délais manuel s'initie à l'intérieur de l'instruction <a href="#5Propritsetvaleurs">propriétés et valeurs</a>.
+    Il faut alors spécifier la clé delay avec sa valeur en millisecondes.</p>
+
+    <code>
+        css: [°st
+            500, {transform: 'rotate(45deg)', delay: 1000}, 'linear'°r
+            /* la première ligne envoie un délais de 500ms + 1000ms = 1500ms */
+        °et]
+    </code>
+
+    <div class="tab">
+
+        <h4>Délais manuel et no-delay</h4>
+
+        <p>Dans le cas de l'utilisation du mode 'no-delay' seul le délais liée à la durée d'animation
+        est annulé, de fait il reste l'addition des délais manuels.</p>
+
+        <code>
+            css: [°st
+                500, {transform: 'rotate(45deg)', delay: 1000}, 'linear', 'no-delay'°r
+                /* la première ligne envoie un délais de 0ms + 1000ms = 1000ms */
+            °et]
+        </code>
+
+        <h4>Ordre des délais</h4>
+
+        <p>L'ordre d'apparition des délais manuels à aussi son importance, cela offre de
+        nombreuses possibilités supplémentaires, comme dans l'exemple suivant :</p>
+
+        <code>
+            css: [°st
+                500, {delay: 1000, transform: 'rotate(45deg)'}, 'linear', 'no-delay'°r
+                /* la première ligne envoie un délais de 0ms + 1000ms = 1000ms */°r
+                /* le délais manuel apparaît avant transform, donc transform ne s'exécutera qu'après 1000ms */
+            °et]
+        </code>
+
+        <h4>Notation variable</h4>
+
+        <p>Le délais manuel dispose aussi de la notation variable (ce qui permet de spécifier
+        plusieurs délais), pour en apprendre plus sur la notation variable rendez-vous sur
+        la page liée aux <a href="doc/?page=queue">queues</a>.</p>
+
+    </div>
+
+    <h3>Incrémentation</h3>
+
+    <p>Il est possible d'incrémenter une variable à l'intérieur de l'instruction <a href="#5Propritsetvaleurs">propriétés et valeurs</a>.
+    Il faut alors spécifier la clé increment comme pour <a href="doc/?page=increment">la méthode de la fonction pps</a>.</p>
+
+    <code>
+        variable: ['myvar', '8'],°r
+        css: [°st
+            500, {increment: ['myvar', '+10'], transform: 'rotate(45deg)'}°r
+            /* myvar se voit ajouter 10 pour chaque élément */
+        °et]
+    </code>
+
+    <h3>Iterateurs</h3>
+
+    <p>Il est possible d'initier un iterateur à l'intérieur de l'instruction <a href="#5Propritsetvaleurs">propriétés et valeurs</a>.
+    Il faut alors spécifier la clé iterator (ou it).</p>
+
+    <code>
+        css: [°st
+            500, {iterator: ['name', 'bezier'], transform: 'rotate(45deg)'}
+        °et]
+    </code>
+
+    <p>Un iterateur est une fonction qui va renvoyer une valeur différente selon l'index de
+    l'élément, la manière dont cette valeur se modifie peut être contrôlée grace à une
+    courbe de bézier.</p>
+
+    <div class="tab">
+
+        <h4>Syntaxe</h4>
+
+        <code>iterator: ['name', '0,0 0.1,0.8 0.9,0.2 1,1']</code>
+
+        <h4>Nom</h4>
+
+        <p>Le premier paramètre correspond au nom de la variable itérateur.</p>
+
+        <h4>Bezier</h4>
+
+        <p>Le second paramètre correspond à la courbe de bézier que les valeurs vont suivre.</p>
+
+        <p><a href="curve/index.html">Voir notre outil de création de courbes de bézier pour les itérateurs</a></p>
+
+    </div>
+
+</div>
+
+
+<!-- FIN -->

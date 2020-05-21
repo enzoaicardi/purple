@@ -1,0 +1,167 @@
+<!-- EN TETE -->
+
+<h1>CLASS | CL</h1>
+
+<dfn>Class est une méthode de la fonction pps qui permet de d'attribuer des classes à des éléments.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    class: {°st
+        add: 'class_name',°r
+        remove: 'class_name',°r
+        replace: {°st
+            old: 'old_class_name',°r
+            new: 'new_class_name'
+        °et},°r
+        contains: 'class_name',°r
+        statement: true
+    °et}
+</code>
+
+<p>La méthode class permet d'ajouter, de supprimer ou de remplacer le ou les classes des éléments
+sélectionnés.</p>
+
+<h2>Paramètres</h2>
+
+<p>La méthode class comprend plusieurs paramètres permettant de faire plusieurs opérations.</p>
+
+<div class="tab">
+
+    <h3>Add</h3>
+
+    <p>Add permet d'ajouter la classe renseignée aux objets sélectionnés via le <a href="doc/?page=selector">sélecteur</a>.</p>
+
+    <code>
+        pps({
+            °stclass: {°st
+
+                add: 'class-1'
+            
+            °et}°et
+        });
+    </code>
+
+    <h3>Remove</h3>
+
+    <p>Remove permet de retirer la classe renseignée aux objets sélectionnés.</p>
+
+    <code>
+        pps({
+            °stclass: {°st
+
+                remove: 'class-2'
+            
+            °et}°et
+        });
+    </code>
+
+    <h3>Replace</h3>
+
+    <p>Replace permet de replacer une classe par une autre pour les objets sélectionnés.</p>
+
+    <code>
+        pps({
+            °stclass: {°st
+
+                replace: {°st
+                    old: 'old-class',°r
+                    new: 'new-class'
+                °et}
+            
+            °et}°et
+        });
+    </code>
+
+    <div class="tab">
+
+        <h4>Old</h4>
+
+        <p>Old désigne la classe à remplacer.</p>
+
+        <code>
+            pps({
+                °stclass: {°st
+    
+                    replace: {°st
+                        old: 'old-class'
+                    °et}
+                
+                °et}°et
+            });
+        </code>
+
+        <h4>New</h4>
+
+        <p>New désigne la classe qui remplacera old.</p>
+
+        <code>
+            pps({
+                °stclass: {°st
+    
+                    replace: {°st
+                        new: 'new-class'
+                    °et}
+                
+                °et}°et
+            });
+        </code>
+
+    </div>
+
+    <h3>Contains</h3>
+
+    <p>Contains est un paramètre conditionnel, si la classe renseignée est présente alors les
+    autres paramètres seront actifs, sinon aucun changement ne sera effectué.</p>
+
+    <code>
+        pps({
+            °stclass: {°st
+
+                add: 'class-to-add',°r
+                contains: 'class-contained'
+            
+            °et}°et
+        });
+    </code>
+
+    <p>Dans l'exemple ci-dessus : si l'élément possède la classe 'class-contained' alors on ajoute
+    à l'élément la classe 'class-to-add', sinon on ne fait rien.</p>
+
+    <h3>Statement</h3>
+
+    <p>Le comportement de contains peut être changé grâce au paramètre statement.
+    Par défaut à true c'est un booléen qui détermine si les changements son effectués quand
+    contains vaut true ou false.</p>
+
+    <code>
+        pps({
+            °stclass: {°st
+
+                add: 'class-to-add',°r
+                contains: 'class-contained',°r
+                statement: false
+            
+            °et}°et
+        });
+    </code>
+
+    <p>Dans l'exemple ci-dessus : si l'élément ne possède pas la classe 'class-contained' alors on ajoute
+    à l'élément la classe 'class-to-add', sinon on ne fait rien.</p>
+
+</div>
+
+
+<!-- FIN -->

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>PurpleSand JS | plus efficace avec javascript</title>
+
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="header.css">
+
+        <!-- <base href="http://127.0.0.1:5500/pps-demo/"> -->
+
+    </head>
+
+    <body class='dark'>
+
+        <!-- script de theme -->
+        <script>
+            if(localStorage.getItem('theme') == 'dark'){
+                document.querySelector('body').classList = ['dark'];
+            }
+            else if(localStorage.getItem('theme') == 'light'){
+                document.querySelector('body').classList = ['light'];
+            }
+        </script>
+
+        <div class="pass-animation">Passer - ESPACE</div>
+
+        <main>
+
+            <header>
+
+            </header>
+
+            <section class="accueil">
+
+
+                <h1>
+                    <span class="purple"><i>P</i><i>u</i><i>r</i><i>p</i><i>l</i><i>e</i></span><span class="sand"><i>S</i><i>a</i><i>n</i><i>d</i></span>                    
+                </h1>
+
+                <div class="logo">
+                    
+                    <img class="pps-logo" src="img/logo/logo_part_1.svg">
+                    <img class="pps-logo" src="img/logo/logo_part_2.svg">
+                    <img class="pps-logo" src="img/logo/logo_part_3.svg">
+
+                </div>
+
+
+            </section>
+
+            <section class="page">
+
+                <!-- Reste de la page -->
+
+                <!-- nature -->
+
+                <section class="left what-is">
+
+                    <article>
+                        <div class="point"></div>
+                        <h2>Nature</h2>
+                    </article>
+
+                    <p>PurpleSand est une librairie javascript qui prend la forme d'un
+                    module.</p>
+
+                </section>
+
+                <!-- utilité -->
+
+                <section class="right utility">
+
+                    <article>
+                        <h2>Utilisation</h2>
+                        <div class="point"></div>
+                    </article>
+
+                    <p>PurpleSand permet de faire de nombreuses manipulations complexes du DOM
+                    mais de manière simple, grâce à des outils de sélection et de propagation avancés.</p>
+
+                </section>
+
+                <!-- vocation -->
+
+                <section class="left vocation">
+
+                    <article>
+                        <div class="point"></div>
+                        <h2>Vocation</h2>
+                    </article>
+
+                    <p>PurpleSand a pour vocation de se combiner à javascript de manière
+                    toujours plus simple, nous voulons d'une librairie qui simplifie les tâches
+                    les plus complexes, mais qui ne remplace pas la syntaxe de base de javascript.</p>
+
+                </section>
+
+                <!-- erreurs -->
+
+                <section class="right erreurs">
+
+                    <article>
+                        <h2>Gestion des erreurs</h2>
+                        <div class="point"></div>
+                    </article>
+
+                    <p>PurpleSand dispose de sa propre gestion des erreurs, ainsi votre code
+                    est simple à débugguer grâce aux messages d'erreurs personnalisés.</p>
+
+                </section>
+
+                <!-- structure -->
+
+                <section class="left structure">
+
+                    <article>
+                        <div class="point"></div>
+                        <h2>Logique de queues</h2>
+                    </article>
+
+                    <p>PurpleSand est structuré selon un modèle de queues. Chaque instruction
+                    est executée dans l'ordre d'apparition, ce qui permet de mieux contrôler
+                    son code.</p>
+                    <code>
+                        pps({°st
+                            /* on execute la méthode 1 */°r
+                            methode_1: ...,°r
+                            /* on attend que la méthode 1 soit terminée */°r
+                            /* -> puis on execute la méthode 2 */°r
+                            methode_2: ...°r 
+                            ...
+                        °et});
+                    </code>
+
+                </section>
+
+                <!-- evolution -->
+
+                <section class="right evolutions">
+
+                    <article>
+                        <h2>Evolutions rapides</h2>
+                        <div class="point"></div>
+                    </article>
+
+                    <p>PurpleSand possède des méthodes comme CSS qui se basent directement sur
+                    des propriétés javascript que vous-même pouvez renseigner, ainsi si une fonctionnalité
+                    est ajouté à javascript, alors elle est ajoutée à PurpleSand.</p>
+
+                </section>
+
+                <!-- de belles promesses -->
+
+                <section class="left promesses">
+
+                    <article>
+                        <div class="point"></div>
+                        <h2>De belles promesses</h2>
+                    </article>
+
+                    <p>PurpleSand est basé sur un système de promesses et garantit ainsi la bonne
+                    execution du code avec une prise en compte des retards d'execution.</p>
+
+                </section>
+
+                <!-- integration rapide -->
+
+                <section class="right integrer">
+
+                    <article>
+                        <h2>Intégration rapide</h2>
+                        <div class="point"></div>
+                    </article>
+
+                    <p>PurpleSand est facile à intégrer dans votre fichier javascript, pour cela
+                    il suffit de définir votre fichier js comme module.</p>
+                    <code>
+                        °*script type="module" src="myscript.js" defer*°°*/script*°
+                    </code>
+                    <p>Et d'importer PurpleSand à l'intérieur de votre fichier JS.</p>
+                    <code>
+                        import pps from 'https://purplesandurl.com/pps.js';
+                    </code>
+
+                </section>
+
+            </section>
+
+            <!-- démo -->
+
+            <section class="demos">
+
+                <!-- Vent -->
+                <svg viewBox="0 0 100 26" class="vent">
+                    <path fill="rgba(0,0,0,0)" stroke-width="0.2" d="M 100 16 C 93 24 80 24 71 21 C 57 15 72 4 74 14 C 75 23 59 22 33 15 C 20 11 10 23 0 17" style="filter: none;"></path>
+                </svg>
+
+                <svg viewBox="0 0 32 32" class="feuille-morte">
+                    <path fill="rgba(108,45,116,1)" stroke="rgba(0,0,0,0)" stroke-width="0.2" d="M 15 32 L 15 25 L 17 25 L 17 32 L 15 32" style="filter: none;"></path>
+                    <path fill="rgba(146,76,154,1)" stroke="rgba(0,0,0,0)" stroke-width="0.2" d="M 15 25 C 3 23 2 10 16 0 C 30 10 30 23 17 25" style="filter: none;"></path>
+                    <path fill="rgba(108,45,116,0)" stroke="rgba(108,45,116,1)" stroke-width="0.6" d="M 16 25 L 16 19 L 12 18 L 16 19 L 20 18 L 16 19 L 16 16 L 22 14 L 16 16 L 10 14 L 16 16 L 16 13 L 12 11 L 16 13 L 20 11 L 16 13 L 16 5" style="filter: none;"></path>
+                </svg>
+
+                <div class="arbre sapin s1">
+
+                    <div class="feuille f1"></div>
+                    <div class="feuille f2"></div>
+                    <div class="feuille f3"></div>
+                    <div class="feuille f4"></div>
+
+                    <div class="tronc"></div>
+
+                </div>
+
+                <div class="arbre feuillu fe2">
+
+                    <div class="feuille f1"></div>
+                    <div class="feuille f2"></div>
+                    <div class="feuille f3"></div>
+                    <!-- <div class="feuille f4"></div> -->
+                    <div class="feuille f3"></div>
+                    <div class="feuille f2"></div>
+
+                    <div class="tronc"></div>
+
+                </div>
+
+                <div class="arbre seco">
+
+                    <div class="feuille f1"></div>
+                    <div class="tronc br"></div>
+                    <div class="feuille f2"></div>
+                    <div class="tronc br"></div>
+                    <div class="feuille f3"></div>
+                    <div class="tronc br"></div>
+                    <div class="feuille f4"></div>
+
+                    <div class="tronc"></div>
+
+                </div>
+
+                <div class="arbre sapin s2">
+
+                    <div class="feuille f1"></div>
+                    <div class="feuille f2"></div>
+                    <div class="feuille f3"></div>
+                    <div class="feuille f4"></div>
+
+                    <div class="tronc"></div>
+
+                </div>
+
+                <div class="arbre feuillu fe1">
+
+                    <div class="feuille f1"></div>
+                    <div class="feuille f2"></div>
+                    <div class="feuille f3"></div>
+                    <!-- <div class="feuille f4"></div> -->
+                    <div class="feuille f3"></div>
+                    <div class="feuille f2"></div>
+
+                    <div class="tronc"></div>
+
+                </div>
+
+                <div class="arbre bao">
+
+                    <div class="feuille f4"></div>
+                    <div class="feuille f2"></div>
+
+                    <div class="tronc br2"></div>
+                    <div class="tronc br"></div>
+                    <div class="tronc"></div>
+
+                </div>
+
+            </section>
+
+            <!-- footer -->
+            <footer>
+
+                
+
+            </footer>
+
+        </main>
+
+        <script type="module" src="index.js" defer></script>
+
+    </body>
+
+</html>

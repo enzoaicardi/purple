@@ -1,0 +1,235 @@
+<!-- EN TETE -->
+
+<h1>KEYFRAME | FRAME</h1>
+
+<dfn>Keyframe est une méthode qui permet de créer une animation complexe sur un ou plusieurs
+éléments du DOM. Keyframe est capable de gérer les delais et les transitions de manière intuitive.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    keyframe: [array]
+</code>
+
+<p>La méthode keyframe utilise la même syntaxe que la méthode <a href="doc/?page=css">css</a>. Il
+existe cependant des différences importantes à connaitre pour éviter les erreurs.</p>
+
+<h2>Spécificitées</h2>
+
+<div class="tab">
+
+    <h3>API de rendu</h3>
+
+    <p>Pour effectuer une animation la méthode keyframe a recours à <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/animate">l'API Web Animations</a> de
+    javascript.</p>
+
+    <code>element.animate(keyframes, options);°r/* API Web Animations */</code>
+
+    <p>La rédaction des animations via cette API est très peu intuitive et de nombreux paramètres sont
+    a prendre en compte sans quoi l'animation n'a pas lieu. La méthode keyframe permet de simplifier
+    cela en utilisant la même syntaxe que la méthode <a href="doc/?page=css">css</a>.</p>
+
+    <h3>Queue des animations</h3>
+
+    <p>L'animation est gérée par des intervals clé, quand une animation se termine elle envoie un évènement
+    au gestionnaire d'évènement suivant :</p>
+
+    <code>Animation.onfinish();</code>
+
+    <p>Il est donc impératif de s'assurer que les navigateurs gérent ce type d'évènements.</p>
+
+    <h3>Délais manuels</h3>
+
+    <p>Comme dit plus tôt la méthode keyframe gère l'animation par des intervals clés, de ce fait elle
+    ne possède pas de méthode delay, pour ajouter manuellement du délais vous devrez alors
+    procéder comme suit :</p>
+
+    <code>
+        keyframe: [°st
+            1000, {backgroundColor: 'red'},°r
+            300, {}, /* on ajoute un délais de 300ms pendant lequel rien ne se passe */°r
+            1000, {backgroundColor: 'green'}
+        °et]
+    </code>
+
+    <h3>Propriétés rejetées</h3>
+
+    <p>Certaines propriétés ne peuvent pas être changées via la méthode keyframe, c'est par exemple
+    le cas de display.</p>
+
+    <h3>Options</h3>
+
+    <p>Il est possible de spécifier des options pour la méthodes keyframe. Elles doivent êtres
+    spécifiées dans un objet au début du tableau.</p>
+
+    <code>
+        keyframe: [°st°r
+            {/* options ... */},°r°r
+            1000, {backgroundColor: 'red'},°r
+            1000, {backgroundColor: 'green'}
+        °et°r]
+    </code>
+
+    <p>Ne pas renseigner d'options ne pose pas de problème et assure ainsi la compatibilité entre les
+    méthodes <a href="doc/?page=css">css</a> et keyframe (les options n'auront pas d'effet sur la
+    méthode css).</p>
+
+    <p>La liste des options disponibles sont les mêmes que pour l'API Web Animations de javascript.
+    <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/animate">Cliquez ici</a> pour voir la liste des options.</p>
+
+    <div class="tab">
+
+        <h4>id</h4>
+
+        <p>L'id pour référencer l'animation.</p>
+
+        <code>{id: 'myanimation'}</code>
+
+        <h4>delay</h4>
+
+        <p>Le nombre de millisecondes avant le départ de l'animation.</p>
+
+        <code>{delay: 1000}</code>
+
+        <h4>direction</h4>
+
+        <p>L'ordre dans lequel l'animation est jouée.</p>
+
+        <code>
+            direction:°st
+                'normal'°r
+                'reverse'°r
+                'alternate'°r
+                'alternate-reverse'
+            °et
+        </code>
+
+        <h4>duration</h4>
+
+        <p>La durée est gérée automatiquement par la méthode keyframe, il est donc inutile de
+        la préciser (sinon elle sera remplacée).</p>
+
+        <h4>easing</h4>
+
+        <p>Easing est gérée automatiquement par la méthode keyframe, il est donc inutile de
+        la préciser.</p>
+
+        <h4>endDelay</h4>
+
+        <p>Le nombre de millisecondes à attendre après la fin de l'animation.</p>
+
+        <code>{endDelay: 1000}</code>
+
+        <h4>iterations</h4>
+
+        <p>Nombre de fois que l'animation doit se répéter.</p>
+
+        <code>
+            iterations:°st
+                1 /* par défaut */°r
+                2, 3, 4, ... °r
+                Infinity /* se répète à l'infini, insensible à wait, ne renvoie aucun délais */
+            °et
+        </code>
+
+        <h4>iterationStart</h4>
+
+        <p>L'index d'iteration auquel l'animation doit débuter.</p>
+
+        <h4>Les autres options</h4>
+
+        <p>Il existe d'autres options qui viendront avec les évolutions de l'API Web Animations que vous pouvez
+        retrouver sur <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/animate">la page MDN de l'API</a>.</p>
+
+    </div>
+
+    <h3>L'objet Animation</h3>
+
+    <p>La méthode keyframe retourne un objet Animation qui est manipulable via javascript.
+    La compatibilité entre les navigateurs n'est pas toujours très bonne, il est donc
+    nécéssaire de se reseigner au préalable sur <a href="https://developer.mozilla.org/fr/docs/Web/API/Animation">la page MDN des animations</a>.</p>
+
+    <p>La méthode keyframe attache un paramètre keyframe aux éléments qui jouent une
+    animation. La paramètre keyframe contient autant de propriétés qu'il y a d'id (options)
+    d'animation.</p>
+
+    <code>
+        keyframe: [°st°r
+            {id: 'myanimation'},°r°r
+            1000, {backgroundColor: 'red'},°r
+            1000, {backgroundColor: 'green'}
+        °et°r]
+    </code>
+
+    <p>L'animation suivante pourra alors être contrôlée via :</p>
+
+    <code>
+        element.keyframe.myanimation; /* renvoie l'animation */°r
+        element.keyframe.myanimation.pause(); /* met en pause l'animation */°r
+        ...
+    </code>
+
+    <p>Si une animation ne comporte pas d'id (options) alors elle sera accessible via la propriété
+    défault.</p>
+
+    <code>
+        element.keyframe.default;
+    </code>
+
+    <div class="tab">
+
+        <h4>Les méthodes de l'objet Animation</h4>
+
+        <p>Toutes les méthodes de l'objet Animation sont listées sur <a href="https://developer.mozilla.org/fr/docs/Web/API/Animation">cette page</a>.</p>
+
+    </div>
+
+    <h3>Offset-Path</h3>
+
+    <p>En définissant un chemin via la propriété de style offset-path il est possible ensuite
+    de controler l'animation via ce dernier.</p>
+
+    <p>La propriété offset-path définit le tracé d'un mouvement sur lequel un élément
+    est positionné, relativement au conteneur parent ou au système de coordonnées SVG.</p>
+
+    <p><a href="makepath/index.html">Voir notre application pour créer des chemins SVG rapidement</a>.</p>
+
+    <code>/* CSS */°roffset-path: path('M-70,-40 C-70,70 70,70 70,-40');</code>
+
+    <code>
+        /* JS | PurpleSand */°r°r
+
+        keyframe: [°st°r
+            {id: 'myanimation'},°r°r
+            1000, {offsetDistance: '50%'}, /* L'élément se déplace à la moitié de offset-path */°r
+            1000, {offsetDistance: '40px'} /* L'élément se déplace à une position absolue le long du chemin */
+        °et°r]
+    </code>
+
+    <p>La liste des propriétés offset est la suivante :</p>
+
+    <code>
+        offsetPath,°r
+        offsetPosition,°r
+        offsetDistance,°r
+        offsetRotate,°r
+        offsetAnchor
+    </code>
+
+    <p>Toutes les propriétés et leur fonctionnement sont détaillées sur <a href="https://developer.mozilla.org/fr/docs/Web/CSS/offset">cette page</a>.</p>
+    
+</div>
+
+<!-- FIN -->

@@ -1,0 +1,84 @@
+<!-- EN TETE -->
+
+<h1>IF | STATEMENT</h1>
+
+<dfn>If est une méthode de la fonction pps qui permet préciser une condition d'execution.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    if: {°st
+        condition: ...°r
+        /* queue classique */
+    °et}
+</code>
+
+<p>La méthode if permet de préciser une condition d'execution pour une partie de la queue.
+Cette méthode ne créer pas de nouvelle queue comme <a href="doc/?page=foreach">foreach</a>,
+il s'agit toujours de la même queue, qui peut être influencée par les mêmes paramètres.</p>
+
+<p>L'ordre d'execution des instructions est toujours concervé, et la méthode if peut
+s'imbriquer dans une méthode if.</p>
+
+<code>
+    let cond = false;°r
+    pps({
+        °st$: 'elements'°r
+        if: { condition: cond === true,°r
+        start: 2°r
+        }°r
+        /* puisque cond === false alors start gardera sa valeur par défaut */°et
+    });
+</code>
+
+<h2>Paramètre</h2>
+
+<p>La méthode if prend un paramètre obligatoire, il s'agit de condition. Ce paramètre spécifie
+la condition à remplir comme pour un if(...) classique en javascript.</p>
+
+<code>
+    if (thisvalue > 1000 && thatvalue &lt; 500){°st
+        /* do something ... */
+    °et}°r°r
+    /* est équivalent à ... */°r°r
+    if: { condition: thisvalue > 1000 && thatvalue &lt; 500°st
+        /* do something ... */
+    °et}
+</code>
+
+<h2>Fonction</h2>
+
+<p>Javascript est à la fois interprété et compilé, pour cette raison les variables noms de variables
+externes au module voient leur valeur directement imprimé dans le module. Leur valeur devient
+donc statique. Pour éviter ce problème il est possible de faire référence à des fonctions
+qui appelent des variables plutôt que les variables elles mêmes. Il devient alors possible de
+changer la valeur des variables pendant l'execution de la queue.</p>
+
+<p>Pour cette raison il est possible de passer une fonction en condition.
+Cette fonction doit obligatoirement retourner la condition.</p>
+
+<code>
+    if: { condition: ()=>{return thisvalue > 1000 && thatvalue &lt; 500;}°st
+        /* do something ... */
+    °et}°r°r
+    /* ou ... */°r°r
+    function namedFunction(){return thisvalue > 1000 && thatvalue &lt; 500;}°r°r
+    if: { condition: namedFunction°st
+        /* do something ... */
+    °et}
+</code>
+
+
+<!-- FIN -->

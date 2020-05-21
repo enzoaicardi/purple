@@ -1,0 +1,438 @@
+<!-- EN TETE -->
+
+<h1>FOREACH | EACH</h1>
+
+<dfn>Foreach est une méthode de la fonction pps qui permet de renseigner une fonction ou des
+méthodes qui s'appliqueront aux éléments un à un.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    foreach: async (item, params)=>{ /* contenu de la fonction */ }°r
+    foreach: { méthode_1: 'valeur', méthode_2: 'valeur', ... }
+</code>
+
+<p>La méthode function ne prend qu'un seul argument pouvant être de types différents.</p>
+
+<h2>Différence avec function</h2>
+
+<p>La principale différence entre foreach et <a href="doc/?page=function">function</a> c'est que function ne s'execute qu'une seule fois
+tandis que foreach s'execute autant de fois qu'il y a d'éléments sélectionnés.</p>
+
+<p>Une autre différence est que foreach ne peut prendre en argument que des fonctions asynchrones
+mais qui seront pas sorties de la <a href="doc/?page=queue">queue</a> pour autant.</p>
+
+<h2>Fonction de rappel</h2>
+
+<p>La fonction spécifiée est en réalité une fonction de rappel asynchrone prennant deux arguments,
+le premier argument reverra chaque objet de la liste des éléments selectionnés avec le selecteur,
+le deuxième renverra tout les paramètres de la queue en cours de lecture.</p>
+
+<p>La fonction de rappel peut être une fonction nommée, dans ce cas son appel se fera sans les paranthèses.
+Dans tous les cas la fonction spécifiée doit être asynchrone.</p>
+
+<code>
+    async function myFunction(item, params){ /* contenu de la fonction */ }°r
+    
+    foreach: myFunction
+</code>
+
+
+<div class="tab">
+
+    <h3>Item</h3>
+
+    <code>
+        pps({
+            °st$: {°st
+                $: 'elements',°r
+                min: 3
+            °et}°r
+            start: 5,°r
+            interval: 200,°r
+            foreach: async (item, params) => {  item.style.backgroundColor = 'aqua';  }
+            °et
+        });
+    </code>
+
+    <p>Dans l'exemple ci-dessus l'argument item renverra chaque élément du sélecteur et sera donc
+    affecté par min, foreach prend en compte les paramètres de position comme start, shift
+    ou propagation, à l'inverse de <a href="doc/?page=function">function</a>.</p>
+
+
+    <h3>Params</h3>
+
+    <p>Params renvoie l'ensemble des paramètres à cette étape précise de la queue. Chaque paramètre
+    est accessible via la méthode du même nom.</p>
+
+    <code>
+        pps({
+            °st
+            foreach: async (item, params) => {°r
+            °st°r
+                params.start -> start°r
+                params.frequence -> frequence°r
+                params.propagation -> propagation°r
+                params.interval -> interval°r
+                params.wait -> wait°r
+                params.reset -> reset°r
+                params.elements -> [el1, el2, el3, ... eln]°r
+                params.index -> /* element current index (start at 1) */°r
+                ...
+            °et°r
+            }
+            °et
+        });
+    </code>
+
+    <div class="tab">
+
+        <h4>Lecture</h4>
+
+        <p>L'objet params est un clone du contexte actuel, il peut être utilisé dans des conditions,
+        par exemple pour vérifier la valeur d'un paramètre.</p>
+
+        <code>
+            let increment = 0;°r°r
+            pps({
+                °st
+                foreach: async (item, params) => {
+                °st
+                    if (params.start > 2) {°st
+                        increment++;°r
+                        /* increment = 1 */
+                    °et
+                    }
+                °et
+                }
+                °et
+            });
+        </code>
+
+        <h4>Modification du clone</h4>
+
+        <p>L'objet params est un clone du contexte actuel, il peut être modifié mais cela n'influra pas
+        sur les valeurs réelles des différents paramètres. Seul le clone sera modifié et pour cette
+        fonction uniquement.</p>
+
+        <code>
+            pps({
+                °st
+                interval: 1000,°r
+                foreach: async (item, params) => {
+                °st
+                    params.interval = 500;°r
+                    /* params.interval devient 500 */°r
+                    /* mais interval: reste toujours à 1000 */
+                °et
+                }
+                °et
+            });
+        </code>
+
+        <p>Si un des paramètres était modifié pendant la fonction son changement ne s'appliquerait
+        qu'à la fin de celle-ci, c'est pour cette raison que c'est impossible.</p>
+
+        <h4>Modification du paramètre</h4>
+
+        <p>Pour modifier la valeur d'un paramère depuis une fonction il suffit d'avoir recours aux
+        variables.</p>
+
+        <code>
+            /* On commence par définir la variable value */°r
+            let value = 1000;°r°r
+
+            pps({
+                °st
+                /* on ajoute un interval dont la valeur est celle de notre variable */°r
+                interval: value,°r°r
+                foreach: async (item, params) => {
+                °st
+                    if (params.value === 1000) {°st
+                        /* on change la valeur de notre variable */°r
+                        value = 2000;
+                    °et
+                    }
+                °et
+                },°r°r
+
+                /* on définit ensuite l'interval avec la nouvelle valeur */°r
+                /* il prendra effet pour les fonctions et méthodes suivantes */°r
+                intv: value
+                °et
+            });
+        </code>
+
+        <p>Pour des raisons de simplicité on utilise ici les deux notations possibles de la
+        méthode interval (interval | intv) au lieu d'ouvrir une nouvelle queue. En spécifiant dans la
+        même queue deux notations identiques nous obtiendrions une erreur conformément à la syntaxe des
+        objets javascript. Bien que fonctionnant de la même manière que deux queues, l'utilisation
+        récurrente de cette méthode peut rendre le code peu lisible</p>
+
+        <p>Il est néanmoins possible d'utiliser d'autres notations (voir <a href="doc/?page=queue">queue</a>).</p>
+
+    </div>
+
+</div>
+
+
+<h2>Ensemble de méthodes</h2>
+
+<p>Quand foreach est utilisée avec un ensemble de méthode elle peut être relativement compliquée
+à comprendre, dans cette partie nous allons décrire la logique de foreach pour éviter
+les incompréhensions.</p>
+
+<div class="tab">
+
+    <h3>Les méthodes</h3>
+
+    <p>Utiliser foreach avec un ensemble de méthodes consiste en réalité à ouvrir une nouvelle
+    queue pour chaque élément du sélecteur.</p>
+
+    <p>Ainsi foreach dispose exactement des mêmes méthodes que celles d'une queue classique.</p>
+
+    <code>
+        pps({
+            °st
+            foreach: {
+            °st
+                /* on peut utiliser dans foreach les méthodes classiques */°r
+                /* exemple css */°r
+                css: [1000,{backgroundColor: 'purple'}]
+            °et
+            }
+            °et
+        });
+    </code>
+
+    <h3>Intérêt</h3>
+
+    <p>L'intérêt de foreach est de pouvoir combiner les méthodes avant de passer à l'élément
+    suivant.</p>
+
+    <p>Dans le code suivant, tout les éléments auront leur fond changé en rouge, puis
+    une fois fini ils seront tous changés en vert.</p>
+
+    <code>
+        pps({
+            °st
+            $: 'elements',°r
+            css: [1000,{backgroundColor: 'red'}],°r
+            anime: [1000,{backgroundColor: 'green'}]
+            °et
+        });
+    </code>
+
+    <p>Avec foreach on peut décider de changer chaque élément en rouge puis en vert avant de passer
+    au suivant.</p>
+
+    <code>
+        pps({
+            °st
+            $: 'elements',°r
+            foreach: {
+            °st
+                css: [1000,{backgroundColor: 'red'}],°r
+                anime: [1000,{backgroundColor: 'green'}]°r
+                /* on passe à l'élément suivant */
+            °et
+            }
+            °et
+        });
+    </code>
+
+    <p>L'exemple ci-dessus est bien-sûr inutile puisque la méthode css peut gérer cela à elle seule,
+    foreach doit s'utiliser dans le cas d'une combinaison de méthodes différentes, comme par
+    exemple attacher un gestionnaire d'événements en même temps qu'un effet css.</p>
+
+    <h3>Les méthodes globales</h3>
+
+    <p>Comme dit précédemment utiliser foreach revient à créer une queue par élément, de fait la
+    création d'une queue entraine un <a href="doc/?page=reset">reset</a> des méthodes globales.</p>
+
+    <p>Il est cependant possible de régler la méthode
+    <a href="doc/?page=reset">reset</a> à false avant foreach, ainsi les valeurs des paramètres
+    définies via les méthodes globales seront concervées. Cela ne pose pas de problèmes pour
+    les queues définies via la méthode foreach car ces sous-queues sont définies en tant que
+    queues imbriquées, de fait elle disposent uniquement des paramètres par défaut.</p>
+
+    <code>
+        pps({
+            °st
+            $: 'elements',°r
+            start: 2,°r
+            /* on peut utiliser reset: false car start = 1 pour toutes les queues générées */°r
+            foreach: {
+            °st
+                /* start reprend sa valeur par défaut -> 1 */°r
+                css: [1000,{backgroundColor: 'red'}],°r
+                anime: [1000,{backgroundColor: 'green'}]
+            °et
+            }°r
+            /* start est toujours égal à 2 */
+            °et
+        });
+    </code>
+
+    <p>Pour mieux comprendre comment cela fonctionne il faut imaginer foreach comme
+    une boucle qui va sélectionner chaque élément un à un séparéments, elle va donc elle aussi
+    avoir besoin de paramètres pour déterminer son fonctionnement, cependant si start
+    restait supérieur à 1 à chaque boucle les méthodes chercheraient un autre élément que
+    le premier, or foreach prend les éléments un à un, donc à chaque itération de boucle
+    il n'y a qu'un seul élément. La conséquence serait qu'aucun élément ne serait sélectionné.</p>
+
+    <h3>Imbrication de foreach</h3>
+
+    <p>Si foreach possède toutes les méthodes d'une queue classique alors elle possède aussi la
+    méthode foreach. De fait foreach possède une méthode foreach qui possède une méthode foreach,
+    etc...</p>
+
+    <code>
+        pps({
+            °st
+            foreach: {
+            °st
+            foreach: {
+                °st
+                foreach: {
+                    °st
+                        ...
+                    °et
+                    }
+                °et
+                }
+            °et
+            }
+            °et
+        });
+    </code>
+
+    <p>Cependant il n'est généralement pas nécessaire d'aller plus loin qu'une seule imbrication.</p>
+
+    <p>Pour faire une bonne imbrication il faut comprendre la logique des <a href="doc/?page=queue">queues</a> comme pour la section
+    précédente.</p>
+
+    <p>Chaque méthode globale définie à l'intérieur d'une méthode foreach a une influence
+    sur les méthodes foreach de niveau suppérieur qui sont imbriqués dedans. En revanche ces
+    méthodes n'ont pas d'infuence sur la queue principale. En réalité le contexte principal
+    est cloné pour ce qu'il se passe dans la boucle foreach, de fait rien de ce qui est
+    en dehors est influencé.</p>
+
+    <p>Les niveaux dépendent de la méthode foreach de référence :</p>
+
+    <code>
+        pps({
+            °st
+            /* si on prend cette méthode comme référence -> elle correspond au niveau 0 */°r
+            foreach: {
+            °st°r
+                /* niveau 1 */°r
+                foreach: {
+                    °st
+                    /* niveau 2 */°r
+                    foreach: {
+                        °st
+                            ...
+                        °et
+                        }
+                    °et
+                    }°r°r
+                
+                /* niveau 1 */°r
+                foreach: {°st
+                    ...°et
+                }
+                °et
+            }
+            °et
+        });
+    </code>
+
+    <p>Et si on change de référence ...</p>
+
+    <code>
+        pps({
+            °st
+            /* niveau -1 */°r
+            foreach: {
+            °st°r
+                /* si on prend cette méthode comme référence -> elle correspond au niveau 0 */°r
+                foreach: {
+                    °st
+                    /* niveau 1 */°r
+                    foreach: {
+                        °st
+                            ...
+                        °et
+                        }
+                    °et
+                    }°r°r
+                
+                /* niveau 0 */°r
+                foreach: {°st
+                    ...°et
+                }
+                °et
+            }
+            °et
+        });
+    </code>
+
+    <p>Chaque méthode foreach se réfère au contexte du niveau englobant (donc le niveau -1 pour
+    cette référence).</p>
+
+    <p>La règle principale est que chaque foreach renvoie les éléments un à un, pour mieux comprendre
+    l'utilité d'une imbrication nous allons prendre un exemple.</p>
+
+    <code>
+        pps({
+            °st
+            $: 'elements',°r°r
+            interval: 1000,°r°r
+
+            /* chaque élément est exploré 1 à 1 avec un interval de 1000ms */°r
+            foreach: {
+            °st°r
+                /* on change la backgroundColor du premier élément */°r
+                css: [1000,{backgroundColor: 'blue'}],°r°r
+
+                /* on change l'interval pour la foreach imbriqué */°r
+                interval: 400,°r°r
+
+                /* chaque élément est exploré 1 à 1 avec un interval de 400ms */°r
+                foreach: {
+                °st
+                    /* on change la backgroundColor de tous les éléments */°r
+                    css: [1000,{backgroundColor: 'purple'}]
+                °et
+                }°r°r
+
+                /* on passe à l'élément suivant */°r°r
+            °et
+            }
+            °et
+        });
+    </code>
+
+    <p>Dans l'exemple ci-dessus le premier élément verra sa couleur de fond changer, puis celle de
+    tous les éléments changera à son tour, ensuite on passe à l'élément suivant, sa couleur de fond change
+    puis à nouveau celle de tous les éléments.</p>
+
+    <p>Pour éviter les erreurs il est conseillé de lire la partie consacrée aux <a href="doc/?page=queue">queues</a>
+    car il est nécessaire de comprendre cette logique pour débusquer les erreurs.</p>
+
+</div>
+
+<!-- FIN -->

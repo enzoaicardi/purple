@@ -1,0 +1,56 @@
+<!-- EN TETE -->
+
+<h1>INTERVAL | INTV (global)</h1>
+
+<dfn>Interval est une méthode de la fonction pps qui permet de définir un interval en
+milisecondes entre chaque itération de boucle pour les éléments.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>interval: 1000</code>
+
+<p>La méthode interval ne prend qu'un seul argument de type number, il correspond à la durée en milisecondes
+qui sépare chaque itération de boucle.</p>
+
+<p>Toutes les méthodes non-globales, c'est à dire qui font références aux éléments plutôt qu'au contexte, sont affectées.</p>
+
+<h2>Exemple d'utilisation</h2>
+
+<code>
+    pps({
+        °st$: 'elements',°r
+        interval: 400,°r
+        css: [1000,{backgroundColor: 'red'}]
+        °et
+    };
+</code>
+
+<p>Dans l'exemple suivant chaque élément verra sa couleur de fond commencer à changer à 400ms d'interval.</p>
+
+<h2>Espace de calculs</h2>
+
+<p>L'interval peut aussi être spécifié à l'aide d'un espace de calculs,
+ces espaces de calculs sont définit par des accolades.</p>
+
+<code>
+    pps({
+        °st$: 'elements',°r
+        interval: '{400+myvar}',°r
+        css: [1000,{backgroundColor: 'red'}]
+        °et
+    };
+</code>
+
+<!-- FIN -->

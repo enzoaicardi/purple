@@ -1,0 +1,273 @@
+/* --- AVANT LE STYLE --- */
+
+/* polices */
+
+/* HEADER FILE */
+
+/* section main documentation */
+.section_doc{
+
+    max-width: var(--main-max-width);
+    width: 100%;
+
+    padding-left: 0px;
+    padding-right: 0px;
+
+    box-sizing: border-box;
+
+    text-align: justify;
+    font-size: 14px;
+    color: var(--p-color);
+
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+
+}
+
+    /* section doc > inside */
+
+    .section_doc nav{
+
+        flex: none;
+        max-width: 200px;
+        min-height: 80vh;
+
+        box-sizing: border-box;
+
+        border-right: 2px solid var(--purple);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+    }
+
+        .section_doc nav a, .section_doc nav .group{
+
+            cursor: pointer;
+
+            width: 100%;
+            height: 40px;
+
+            padding-left: 10px;
+            padding-right: 10px;
+
+            text-decoration: none;
+            line-height: 40px;
+            text-align: right;
+            color: var(--purple);
+            font-size: 18px;
+
+            box-sizing: border-box;
+            border-bottom: 2px solid var(--purple);
+
+            transition: 0.2s ease;
+
+        }
+
+        .section_doc nav a:hover{
+
+            padding-right: 16px;
+            padding-left: 4px;
+            transition: 0.2s ease;
+
+        }
+
+        .section_doc nav .group{
+
+            background-color: var(--purple);
+            color: var(--background-color);
+            font-weight: bold;
+
+        }
+
+    /* styles du corps de la doc */
+
+    .section_doc .body_doc{
+
+        flex: 1;
+        max-width: 100vw;
+        min-width: 340px;
+
+        box-sizing: border-box;
+
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 40px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+    }
+
+        /* titre */
+        .body_doc h1,
+        .body_doc h2,
+        .body_doc h3,
+        .body_doc h4{
+
+            align-self: stretch;
+
+            height: 40px;
+            margin: 0;
+            margin-bottom: 5px;
+
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 40px;
+            color: var(--sand);
+            letter-spacing: 1px;
+
+            box-sizing: border-box;
+            border-bottom: 2px solid var(--purple);
+
+        }
+
+        /* definition */
+        .body_doc dfn{
+
+            margin-top: 10px;
+            margin-bottom: 20px;
+
+            font-size: 16px;
+            font-style: italic;
+            
+        }
+
+        /* sommaire */
+        .body_doc .sum{
+
+            flex: none;
+            padding: 20px;
+            margin-bottom: 20px;
+
+            border: 2px solid var(--purple);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+
+        }
+
+            .sum h5{
+
+                height: 20px;
+                margin-top: 0;
+                margin-bottom: 18px;
+                
+                text-align: center;
+                font-weight: normal;
+                font-size: 16px;
+                color: var(--sand);
+
+            }
+
+            .sum a{
+
+                text-decoration: none;
+
+                margin-bottom: 10px;
+                padding-right: 10px;
+
+                font-size: 14px;
+                color: white;
+
+                border-bottom: 1px dotted var(--p-color);
+
+            }
+
+        /* text */
+        .body_doc p{
+
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+            font-size: 16px;
+            color: var(--p-color);
+
+        }
+
+        .body_doc p a{
+
+            font-size: inherit;
+            font-weight: inherit;
+
+            text-decoration: none;
+            color: white;
+
+            border-bottom: 1px dotted white;
+
+        }
+
+    /* Les tableaux */
+    .body_doc table{
+        
+        border-collapse: collapse;
+
+        padding: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+    }
+
+    .body_doc table, .body_doc th, .body_doc td{
+
+        border: 1px solid var(--p-color);
+
+    }
+
+    .body_doc th, .body_doc td{
+
+        height: auto;
+        width: auto;
+
+        margin: 0;
+        
+        padding: 5px 15px 5px 15px;
+
+        vertical-align: middle;
+
+        color: var(--code-api);
+
+    }
+
+    .body_doc th{
+
+        padding: 10px 15px 10px 15px;
+
+        background-color:  var(--th-color);
+
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: var(--p-color);
+
+    }
+
+/* footer */
+footer{
+
+    /* flex */
+    display: flex;
+
+}
+
+/* Media Queries -> mobile, peu de changements */
+
+/* changements sur main */
+
+@media screen and (max-width: 600px) {
+
+    main{
+        width: max-content;
+    }
+  
+}

@@ -1,0 +1,87 @@
+<!-- EN TETE -->
+
+<h1>PROPAGATION | PPG (global)</h1>
+
+<dfn>Propagation est une méthode de la fonction pps qui permet l'ordre des éléments dans la file
+d'execution.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>propagation: 'string'</code>
+
+<p>La méthode propagation ne prend qu'un seul argument de type string, il correspond à la méthode
+d'organisation des éléments dans la queue.</p>
+
+<p>Toutes les méthodes non-globales, c'est à dire qui font références aux éléments plutôt qu'au contexte, sont affectées.</p>
+
+<div class="tab">
+
+    <h3>Normal</h3>
+
+    <p>Il s'agit du mode de propagation par défaut, c'est à dire du premier au dernier élément.</p>
+
+    <code>
+        pps({
+            °st$: 'elements',°r
+            propagation: 'normal',°r
+            css: [1000,{backgroundColor: 'red'}]
+            °et
+        });
+    </code>
+
+    <h3>Invert</h3>
+
+    <p>Il s'agit de l'inverse du mode de propagation par normal, c'est à dire du dernier au premier élément.</p>
+
+    <code>
+        pps({
+            °st$: 'elements',°r
+            propagation: 'invert',°r
+            css: [1000,{backgroundColor: 'green'}]
+            °et
+        });
+    </code>
+
+    <h3>Center</h3>
+
+    <p>Il s'agit de d'une combinaison des modes 'normal' et 'invert', la propagation s'effectue des
+    deux cotés du point de départ.</p>
+
+    <code>
+        pps({
+            °st$: 'elements',°r
+            propagation: 'center',°r
+            css: [1000,{backgroundColor: 'blue'}]
+            °et
+        });
+    </code>
+
+    <h3>Random</h3>
+
+    <p>Il s'agit de d'un mode de propagation aléatoire, le starter aura le même effet que pour la
+    propagation normale mais ne détermine pas le premier élément affecté.</p>
+
+    <code>
+        pps({
+            °st$: 'elements',°r
+            propagation: 'random',°r
+            css: [1000,{backgroundColor: 'yellow'}]
+            °et
+        });
+    </code>
+
+</div>
+
+<!-- FIN -->

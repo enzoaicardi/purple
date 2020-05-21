@@ -1,0 +1,63 @@
+<!-- EN TETE -->
+
+<h1>VARS ( ... )</h1>
+
+<dfn>Vars est une fonction du module purplesand qui permet de récupérer et de modifier
+des variables purplesand.</dfn>
+
+<!-- SOMMAIRE -->
+
+<div class="sum">
+
+    <!-- SOMMAIRE AUTO UPDATE -->
+
+    <h5>Sommaire</h5>
+
+</div>
+
+<!-- DECALAGE DE TEXTE -->
+
+<h2>Syntaxe</h2>
+
+<code>
+    vars('name').methode(args);
+</code>
+
+<p>La méthode vars ne prend qu'un seul argument de type string correspondant au nom de la variable.</p>
+
+<h2>Méthodes</h2>
+
+<div class="tab">
+
+    <h3>get</h3>
+
+    <code>
+        vars('myvar').get();°r
+        /* retourne la valeur de la variable myvar */
+    </code>
+
+    <p>Cette méthode retourne la valeur de la variable.</p>
+
+    <h3>set</h3>
+
+    <code>
+        vars('myvar').set(30);°r
+        /* fixe la valeur de myvar a 30 */
+    </code>
+
+    <p>Cette méthode créer ou modifie la variable de sorte à ce que sa valeur
+    corresponde à l'argument passé à set.</p>
+
+    <h3>increment</h3>
+
+    <code>
+        vars('myvar').increment('+5+6-90');°r
+        /* ajoute 5+6-90 à la valeur courante de myvar */
+    </code>
+
+    <p>Cette méthode ajoute le résultat des calculs contenus dans l'argument passé à increment
+    à la variable.</p>
+
+</div>
+
+<!-- FIN -->
