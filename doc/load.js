@@ -9,7 +9,9 @@ import {formatCode} from '../code.js';
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const page = urlParams.get('page');
+let page = urlParams.get('page');
+
+if(page === null){  page = 'pps';  }
 
 if(queryString && urlParams && page){
     
