@@ -39,7 +39,7 @@ faire.</p>
 
     <code>
         /* Au début de votre fichier .js */°r
-        import {pps} from 'https://unpkg.pps-url.com'
+        import {pps} from 'https://unpkg.com/purplesand/pps.js'
     </code>
 
     <p>Pour importer les autres fonctions disponibles avec PurpleSand il suffit de les ajouter
@@ -48,7 +48,7 @@ faire.</p>
 
     <code>
         /* Au début de votre fichier .js */°r
-        import {pps, maths, vars} from 'https://unpkg.pps-url.com'
+        import {pps, maths, vars} from 'https://unpkg.com/purplesand/pps.js'
     </code>
 
     <h3>Import dynamique</h3>
@@ -58,7 +58,7 @@ faire.</p>
 
     <code>
         /* N'importe où dans votre fichier .js */°r
-        let {pps} = await import('./pps-url.js');
+        let {pps} = await import('https://unpkg.com/purplesand/pps.js');
     </code>
 
     <p>Pour importer les autres fonctions disponibles avec PurpleSand il suffit de les ajouter
@@ -67,8 +67,11 @@ faire.</p>
 
     <code>
         /* N'importe où dans votre fichier .js */°r
-        let {pps, maths, vars} = await import('./pps-url.js');
+        let {pps, maths, vars} = await import('https://unpkg.com/purplesand/pps.js');
     </code>
+
+    <p>Si vous souhaitez utiliser une version statique de PurpleSand rendez-vous
+    à <a href="doc/?page=versions">la page des versions</a>.</p>
 
 </div>
 
