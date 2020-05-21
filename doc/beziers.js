@@ -1,4 +1,4 @@
-import {pps} from "../../purplesand/pps.js";
+import {pps} from "https://unpkg.com/purplesand@0.0.1/pps.js";
 
 
 pps({
