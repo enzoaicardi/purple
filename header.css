@@ -301,11 +301,18 @@ footer > section{
 
 }
 
-footer > section a{
+footer > section a.site{
 
     color: var(--p-color);
     text-decoration: none;
 
+}
+
+footer > section a.git{
+    padding: 0;
+    margin: 0;
+    width: 22px;
+    height: 22px;
 }
 
 footer > section svg{
