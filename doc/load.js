@@ -2,7 +2,7 @@
 
 // IMPORTS
 
-import {pps} from 'https://unpkg.com/purplesand@0.0.1/pps.js';
+import {pps} from 'https://unpkg.com/purplesand/pps.js';
 import {formatCode} from '../code.js';
 
 // CHANGEMENT DE PAGE

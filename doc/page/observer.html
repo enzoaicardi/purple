@@ -206,13 +206,8 @@ deux éléments.</dfn>
 
     <h3>Visibility</h3>
 
-    <p>Attention, évitez les ratios 1 et 0, ces ratios peuvent créer des problèmes au niveau des
-    intersections, en effet ces ratios sont à la limite entre l'intersection et la non-intersection
-    de fait ils peuvent entraîner des comportements inatendus avec l'API native javascript
-    <a href="https://developer.mozilla.org/fr/docs/Web/API/Intersection_Observer_API">IntersectionObserver</a>.</p>
-
-    <p>Il existe une autre raison de les éviter qui est la portabilité sur mobile, si votre
-    élément est suppérieur en hauteur à la hauteur du viewport, un ratio de 1 empéchera son
+    <p>Attention, pensez à la portabilité sur mobile, si votre
+    élément est plus haut ou long que le viewport, un ratio de 1 empéchera son
     affichage. Il est préférable d'utiliser des ratios médians et de régler la marge à l'aide
     de margin pour obtenir un rendu plus propre.</p>
 
