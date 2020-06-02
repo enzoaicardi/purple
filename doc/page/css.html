@@ -1,13 +1,8 @@
 <!-- EN TETE -->
 
-<h1>CSS ! DEPRECIATE</h1>
+<h1>CSS | ANIME</h1>
 
-<dfn>Css est aujourd'hui dépreciée, nous vous conseillons d'utiliser anime qui utilise
-    les écouteurs d'événements 'transitionend'. Css est toutefois maintenue du fait de la
-    possible incompatibilité des événements 'transitionend' sur certains navigateurs.
-    A terme anime pourrait remplacer css en absorbant sa nomination, pour ce faire nous
-    vous conseillons de vous renseigner sur les différences entre les deux méthodes pour
-    éviter les erreurs.</dfn>
+<dfn><i>Fusion avec anime -> nouveauté de la version 0.0.3</i></dfn>
 
 <dfn>Css est une méthode qui permet de créer une animation complexe sur un ou plusieurs
 éléments du DOM. Css est capable de gérer les delais et les transitions de manière intuitive.</dfn>
@@ -139,7 +134,7 @@ certain ordre pour être comprises par la méthode css.</p>
                 1000, {backgroundColor: 'red'}, 'ease', 'no-delay',°r
                 /* backgroundColor n'envoie pas de délais et donc transform s'éxecutera en même temps */°r
                 500, {transform: 'rotate(45deg)'}, 'linear' ...°r
-                /* transform envoie un délais de 500ms avant l'exécution des autres animations */
+                /* transform envoie un délais de 500ms (transitionend) avant l'exécution des autres animations */
 
             °et]
         </code>
@@ -155,7 +150,7 @@ certain ordre pour être comprises par la méthode css.</p>
                 500, {transform: 'rotate(45deg)'}, 'linear', 'no-delay',°r
                 /* transform n'envoie pas de délais et donc backgroundColor s'éxecutera en même temps */°r
                 1000, {backgroundColor: 'red'}, 'ease', ...°r
-                /* backgroundColor envoie un délais de 1000ms avant l'exécution des autres animations */
+                /* backgroundColor envoie un délais de 1000ms (transitionend) avant l'exécution des autres animations */
             °et]
         </code>
 
@@ -207,8 +202,32 @@ certain ordre pour être comprises par la méthode css.</p>
 
     <code>
         css: [°st
-            500, {transform: 'rotate(45deg)', delay: 1000}, 'linear'°r
+            500, {delay: 1000, transform: 'rotate(45deg)'}, 'linear'°r
             /* la première ligne envoie un délais de 500ms + 1000ms = 1500ms */
+        °et]
+    </code>
+
+    <p>Un délais manuel ne doit jamais se trouver à la fin des instructions, le code
+    suivant est incorrect :</p>
+
+    <code>
+        css: [°st
+            500, {transform: 'rotate(45deg)', delay: 1000}, 'linear'°r
+            /* on attend indéfiniment la fin d'une transition (transitionend) */°r
+            /* car le délais retarde la mise en place de l'écouteur d'événements */
+        °et]
+    </code>
+
+    <p>Il n'est jamais indispensable d'ajouter du délais à la fin des instructions,
+    il est par exemple possible de l'ajouter au début de l'instruction suivante.
+    Bien que dans certains cas particuliers l'instruction peut quand même fonctionner,
+    il s'agit d'un mauvais réflexe à éviter.</p>
+
+    <code>
+        css: [°st
+            1500, {transform: 'rotate(45deg)', delay: 1000}, 'linear'°r
+            /* 1500 > 1000 -> donc l'écouteur sera mis en place après les 1000ms */°r
+            /* de fait il pourra détecter la fin de la transition au bout des 1500ms */
         °et]
     </code>
 
@@ -246,6 +265,42 @@ certain ordre pour être comprises par la méthode css.</p>
         la page liée aux <a href="doc/?page=queue">queues</a>.</p>
 
     </div>
+
+    <h3>Propriétés non-transitionnables</h3>
+
+    <p>Il existe de nombreuses propriétés non-transitionnables en css, ces propriétés ne doivent pas
+    (si elles sont seules dans l'objet)
+    être spécifiées avec une durée suppérieure à 0. Sinon l'écouteur attendra indéfiniment
+    qu'une transition se termine, or aucune transition ne se produit puisque la propriété n'est
+    pas transitionnable (c'est le cas de display par exemple).</p>
+
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties">Voir la liste des propriétés animables</a></p>
+
+    <p>Le code suivant est donc incorrect et peut planter votre script :</p>
+
+    <code>
+        anime: [°st
+            1000, {display: 'none'}°r
+            /* Le code ci-dessus est incorrect car display n'est pas transitionnable */
+        °et]
+    </code>
+
+    <p>Le code correct serait :</p>
+
+    <code>
+        anime: [°st
+            0, {display: 'none'}
+        °et]
+    </code>
+
+    <p>Ou avec l'utilisation du mode sans délais :</p>
+
+    <code>
+        anime: [°st
+            1000, {display: 'none'}, 'no-delay'°r
+            /* no-delay permet d'annuler le délais de la transitionDuration */
+        °et]
+    </code>
 
     <h3>Incrémentation</h3>
 

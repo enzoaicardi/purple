@@ -16,6 +16,69 @@
 
 <!-- DECALAGE DE TEXTE -->
 
+<h2>Version 0.0.3</h2>
+
+<p>12 modules statiques / 0 modules dynamiques.</p>
+
+<table>
+    <tr>
+        <th scope="col">Statiques</th>
+        <th scope="col">Dynamiques</th>
+    </tr>
+
+    <tr><td data-code="string">anime</td><td>null</td></tr>
+    <tr><td>class</td></tr>
+    <tr><td data-code="string">old/css</td></tr>
+    <tr><td data-code="api">each</td></tr>
+    <tr><td>event</td></tr>
+    <tr><td>include</td></tr>
+    <tr><td>keyframe</td></tr>
+    <tr><td>observer</td></tr>
+    <tr><td data-code="number">queue</td></tr>
+    <tr><td>selector</td></tr>
+    <tr><td>strcalc</td></tr>
+    <tr><td>vars</td></tr>
+    <tr><td>warn</td></tr>
+</table>
+
+<div class="tab">
+
+    <h3>Changements</h3>
+
+    <p>Changements sur le module each.</p>
+
+    <div class="tab">
+
+        <h4>Racine</h4>
+
+        <code>'https://unpkg.com/purplesand@0.0.3/pps.js'</code>
+
+        <h4>Nouveautées</h4>
+
+        <p>> Fin du support du module CSS.</p>
+
+        <p>> Fusion des nom de propriétés CSS et ANIME.</p>
+
+        <p>> Ajout d'un message d'erreur dans le module anime lorsque l'écouteur n'est
+        pas résolut au bout de 30s, l'execution de la queue reprend alors son cours.</p>
+
+        <p>> Ajout de la propagation 'reverse'. Pareil que 'center', la différence se trouve
+        dans les index qui sont renvoyés, ils ne sont pas les mêmes pour deux éléments
+        mais opposés, de plus le premier index est 0 et non 1.</p>
+
+        <h4>Corrections de bugs</h4>
+
+        <p>> Correction d'un problème sur le module anime qui empéchait le déroulement des instructions
+        si la valeur de l'une à l'autre ne changeait pas.</p>
+        
+        <p>> Correction d'un bug sur la propagation 'center' qui écoutait mal la fin des animations.</p>
+
+    </div>
+
+</div>
+
+<!-- ---------------- -->
+
 <h2>Version 0.0.2</h2>
 
 <p>13 modules statiques / 0 modules dynamiques.</p>
@@ -55,17 +118,15 @@
 
         <h4>Nouveautées</h4>
 
-        <p>Changements dans la documentation pour le module observer, les ratios de 1 et 0 sont correctement traités,
+        <p>> Changements dans la documentation pour le module observer, les ratios de 1 et 0 sont correctement traités,
         cependant toujours penser à la portabilité sur mobile.</p>
 
         <h4>Corrections de bugs</h4>
 
-        <p>Correction d'un bug sur le module observer qui n'affichait pas certains éléments lors d'un défilement rapide.
+        <p>> Correction d'un bug sur le module observer qui n'affichait pas certains éléments lors d'un défilement rapide.
         Le module observer est à présent beaucoup plus stable.</p>
 
     </div>
-
-    <h3>Modules</h3>
 
 </div>
 
@@ -111,8 +172,6 @@
         <h4>Corrections de bugs</h4>
 
     </div>
-
-    <h3>Modules</h3>
 
 </div>
 
