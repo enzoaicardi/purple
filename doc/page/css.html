@@ -279,7 +279,7 @@ certain ordre pour être comprises par la méthode css.</p>
     <p>Le code suivant est donc incorrect et peut planter votre script :</p>
 
     <code>
-        anime: [°st
+        css: [°st
             1000, {display: 'none'}°r
             /* Le code ci-dessus est incorrect car display n'est pas transitionnable */
         °et]
@@ -288,7 +288,7 @@ certain ordre pour être comprises par la méthode css.</p>
     <p>Le code correct serait :</p>
 
     <code>
-        anime: [°st
+        css: [°st
             0, {display: 'none'}
         °et]
     </code>
@@ -296,7 +296,7 @@ certain ordre pour être comprises par la méthode css.</p>
     <p>Ou avec l'utilisation du mode sans délais :</p>
 
     <code>
-        anime: [°st
+        css: [°st
             1000, {display: 'none'}, 'no-delay'°r
             /* no-delay permet d'annuler le délais de la transitionDuration */
         °et]
