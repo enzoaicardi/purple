@@ -29,6 +29,38 @@ Retrouvez ici le <a href="https://caniuse.com/#feat=es6-module">tableau des comp
     °*script src="myscript.js" type="module" defer*°°*/script*°
 </code>
 
+<h2>Etape 1 : sans module</h2>
+
+<p>Si vous cherchez une compatibilité dépassant le tableau de compatibilité de l'ES6
+vous pouvez utiliser le polyfill de purplesand. Vous pouvez alors l'initier comme une
+librairie classique.</p>
+
+<p>Il vous sufit d'utiliser le lien suivant dans une balise script, vous pourrez ensuite
+utiliser la librairie dans les autres scripts.</p>
+
+<code>
+    /* A la fin du body */°r
+    °*script src="https://unpkg.com/purplesand/ES5/pps.js"*°°*/script*°°r 
+    °*script src="myscript.js"*°°*/script*°
+</code>
+
+<p>En reccourant à cette méthode l'appel à purplesand est légérement différent. Vous
+ne pouvez pas appeler directement la fonction pps(), vous devez d'abord appeler l'objet
+pps et sa fonction pps.</p>
+
+<code>
+    /* appel avec type = module */°r
+    pps({ ... });°r°r
+    /* appel sans type = module */°r
+    pps.pps({ ... });
+</code>
+
+<p>La polyfill dispose exactement des mêmes versions que la version classique
+et son utilisation est recommandée dans le cas ou vous avez besoin d'une grande compatibilité
+dans des navigateurs anciens.</p>
+
+<p>Notez que l'étape 2 est inutile si vous n'utilisez pas le type module.</p>
+
 <h2>Etape 2 : import</h2>
 
 <p>Ensuite vous pouvez importer PurpleSand dans votre script, pour cela il existe deux façons de
