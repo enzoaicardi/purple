@@ -33,7 +33,7 @@ export function formatCode(){
 
         // reserved words
         content = content.replace(/(let |var |function |true|false)/g, '<span class="reserved">$1</span>');
-        content = content.replace(/(async |await |default |export |import |if |else | from |return )/g, '<span class="keyword">$1</span>');
+        content = content.replace(/(async |await |default |import |if |else | from |return )/g, '<span class="keyword">$1</span>');
         content = content.replace(/(Array|Math|NodeList|HTMLElement)/g, '<span class="api">$1</span>');
 
         // HTML balises
@@ -46,7 +46,6 @@ export function formatCode(){
         content = content.replace(/°r/gi, '<br>');
         content = content.replace(/°st/gi, '<div class="tab">');
         content = content.replace(/°et/gi, '</div>');
-
 
         item[i].innerHTML = content;
 

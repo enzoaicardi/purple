@@ -34,6 +34,11 @@ tandis que foreach s'execute autant de fois qu'il y a d'éléments sélectionné
 <p>Une autre différence est que foreach ne peut prendre en argument que des fonctions asynchrones
 mais qui seront pas sorties de la <a href="doc/?page=queue">queue</a> pour autant.</p>
 
+<p>ATTENTION: depuis la version 0.0.8 vous n'êtes plus obligé d'utiliser
+le mot clé async devant l'appel de la fonction, si vous voulez assurer une
+compatibilité dans les navigateurs la plus anciens il est même déconseillé d'y avoir recours,
+PurpleSand se chargera de la convertir en fonction asynchrone.</p>
+
 <h2>Fonction de rappel</h2>
 
 <p>La fonction spécifiée est en réalité une fonction de rappel asynchrone prennant deux arguments,

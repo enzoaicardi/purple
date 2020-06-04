@@ -3,6 +3,7 @@
 // IMPORTS
 
 import {pps, vars} from 'https://unpkg.com/purplesand/pps.js';
+// import {pps, vars} from '../purplesand/pps.js';
 import {formatCode} from './code.js';
 
 // formatCode
@@ -22,8 +23,8 @@ pps({
         on: 'click',
         passive: true,
         func: (e, item)=>{
-            if(item.classList.contains('theme_light')){  body.classList.replace('dark', 'light');localStorage.setItem('theme', 'light');  }
-            else if(item.classList.contains('theme_dark')){  body.classList.replace('light', 'dark');localStorage.setItem('theme', 'dark');  }
+            if(item.classList.contains('theme_light')){  body.classList = ['light'];localStorage.setItem('theme', 'light');  }
+            else if(item.classList.contains('theme_dark')){  body.classList = ['dark'];localStorage.setItem('theme', 'dark');  }
         }
     },
     $_2: 'footer',
@@ -75,7 +76,7 @@ pps(
     start: 6,
     interval: '{130*p}',
 
-    each: async (item)=>{
+    each: /* async */ (item)=>{
         let parent = item.parentElement.classList;
         item.style.transition = 'color ' + 1*pv() +'s linear 0s';
 

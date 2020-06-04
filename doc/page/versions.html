@@ -16,6 +16,76 @@
 
 <!-- DECALAGE DE TEXTE -->
 
+<h2>Version 0.0.8</h2>
+
+<p>12 modules statiques / 0 modules dynamiques.</p>
+
+<table>
+    <tr>
+        <th scope="col">Statiques</th>
+        <th scope="col">Dynamiques</th>
+    </tr>
+
+    <tr><td data-code="number">anime</td><td data-code="reserved">null</td></tr>
+    <tr><td>class</td></tr>
+    <tr><td data-code="number">each</td></tr>
+    <tr><td>event</td></tr>
+    <tr><td>include</td></tr>
+    <tr><td>keyframe</td></tr>
+    <tr><td>observer</td></tr>
+    <tr><td data-code="number">queue</td></tr>
+    <tr><td>selector</td></tr>
+    <tr><td>strcalc</td></tr>
+    <tr><td>vars</td></tr>
+    <tr><td>warn</td></tr>
+</table>
+
+<div class="tab">
+
+    <h3>Changements</h3>
+
+    <p>Nombreux changements.</p>
+
+    <div class="tab">
+
+        <h4>Racines</h4>
+
+        <code>
+            /* MODULE */°r
+            'https://unpkg.com/purplesand@0.0.8/pps.js'
+        </code>
+
+        <code>
+            /* POLYFILL */°r
+            'https://unpkg.com/purplesand@0.0.8/ES5/pps.js'
+        </code>
+
+        <code>
+            /* ES5 - Compatibility */°r
+            'https://unpkg.com/purplesand@0.0.8/ES5/es5.js'
+        </code>
+
+        <h4>Nouveautées</h4>
+
+        <p>> Ajout d'un script adaptatif qui permet de transformer votre
+        code pps avec import en code pps avec polyfill. Plus d'informations
+        la page <a href="doc/page?=integrer">intégrer</a>.</p>
+
+        <p>> Il n'est plus nécessaire d'utiliser async dans un appel each: 
+        (cela peut être utile pour la compatibilité ES5).</p>
+
+        <h4>Corrections de bugs</h4>
+
+        <p>> La méthode anime n'envoie plus de messages d'avertissement abusifs
+        si une propriété n'est pas disponible et permet sa résolution grace
+        à un timeout plutôt qu'un écouteur d'événements.</p>
+
+    </div>
+
+</div>
+
+<!-- ---------------- -->
+
 <h2>Version 0.0.6</h2>
 
 <p>12 modules statiques / 0 modules dynamiques.</p>

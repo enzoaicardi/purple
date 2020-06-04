@@ -46,10 +46,15 @@
                 </h1>
 
                 <div class="logo">
+
+                    <!-- center le logo sur les vieux navigateurs -->
+                    <div class="es5-comp-block">
                     
                     <img class="pps-logo" src="img/logo/logo_part_1.svg">
                     <img class="pps-logo" src="img/logo/logo_part_2.svg">
                     <img class="pps-logo" src="img/logo/logo_part_3.svg">
+
+                    </div>
 
                 </div>
 
@@ -293,7 +298,8 @@
 
         </main>
 
-        <script type="module" src="index.js" defer></script>
+        <script data-es5="check" type="module" src="index.js" defer></script>
+        <script data-mode="spam" id="es5" src="https://unpkg.com/purplesand/ES5/es5.js"></script>
 
     </body>
 

@@ -7,9 +7,9 @@ import {formatCode} from '../code.js';
 
 // CHANGEMENT DE PAGE
 
-const queryString = window.location.search;
+const queryString = window.location.search.substring(1);
 const urlParams = new URLSearchParams(queryString);
-let page = urlParams.get('page');
+let page = urlParams.get("page");
 
 if(page === null){  page = 'pps';  }
 

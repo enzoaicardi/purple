@@ -22,8 +22,8 @@
 votre balisage HTML.</p>
 
 <p>Attention, si vous avez des besoins spécifiques sur d'anciens navigateurs sachez
-que certains ne supportent pas la syntaxe ES6 concernant les modules.
-Retrouvez ici le <a href="https://caniuse.com/#feat=es6-module">tableau des compatibilité</a>.</p>
+que certains ne supportent pas la syntaxe es5 concernant les modules.
+Retrouvez ici le <a href="https://caniuse.com/#feat=es5-module">tableau des compatibilité</a>.</p>
 
 <code>
     °*script src="myscript.js" type="module" defer*°°*/script*°
@@ -31,7 +31,7 @@ Retrouvez ici le <a href="https://caniuse.com/#feat=es6-module">tableau des comp
 
 <h2>Etape 1 : sans module</h2>
 
-<p>Si vous cherchez une compatibilité dépassant le tableau de compatibilité de l'ES6
+<p>Si vous cherchez une compatibilité dépassant le tableau de compatibilité de l'es5
 vous pouvez utiliser le polyfill de purplesand. Vous pouvez alors l'initier comme une
 librairie classique.</p>
 
@@ -108,6 +108,104 @@ faire.</p>
 
     <p>Si vous souhaitez utiliser une version statique de PurpleSand rendez-vous
     à <a href="doc/?page=versions">la page des versions</a>.</p>
+
+</div>
+
+<h2>Code adaptatif (ALPHA)</h2>
+
+<p>Il se peut que vous ayez déjà rédigé votre code avec des modules et que vous
+vouliez profiter du polyfill. Pour cette raison purplesand dispose d'un script
+détectant la compatibilité du type module avec le navigateur et peut proposer
+à l'usager d'utiliser le polyfill.</p>
+
+<div class="tab">
+
+    <h3>Utilisation</h3>
+
+    <p>Pour mettre en place se dispositif vous devez inclure cette balise script
+    dans votre code HTML.</p>
+
+    <code>°*script id="es5" src="https://unpkg.com/purplesand/ES5/es5.js"*°°*/script*°</code>
+
+    <p>Ensuite vous devez rajouter un attribut data-es5 à "check" pour tous les scripts que vous comptez
+    observer.</p>
+
+    <code>°*script data-es5="check" type="module" src="myscript.js"*°°*/script*°</code>
+
+    <div class="tab">
+
+        <h4>Data-mode</h4>
+
+        <p>Vous pouvez ajouter un attribut data-mode au nouveau script pour
+        qu'il se comporte de différentes manières.</p>
+
+        <h4>Hide (défaut)</h4>
+
+        <code>°*script data-mode="hide" id="es5" src="https://unpkg.com/purplesand/ES5/es5.js"*°°*/script*°</code>
+
+        <p>Le script sera automatiquement convertit sans message à l'utilisateur.</p>
+
+        <h4>Request</h4>
+
+        <code>°*script data-mode="request" id="es5" src="https://unpkg.com/purplesand/ES5/es5.js"*°°*/script*°</code>
+
+        <p>Un message tiendra informé l'utilisateur, un bouton sera disponible pour mettre
+        à jour le script. Une fois activé le message n'apparaît plus.</p>
+
+        <h4>Spam</h4>
+
+        <code>°*script data-mode="spam" id="es5" src="https://unpkg.com/purplesand/ES5/es5.js"*°°*/script*°</code>
+
+        <p>Un message tiendra informé l'utilisateur, un bouton sera disponible pour mettre
+        à jour le script. Le message s'affichera à chaque rafraichissement.</p>
+
+    </div>
+
+    <h3>Fonctionnement</h3>
+
+    <p>Afin de mieux coder votre application il est nécessaire de comprendre
+    le fonctionnement du code adaptatif.</p>
+
+    <div class="tab">
+
+        <h4>Etape 1 : Récupérer le polyfill</h4>
+
+        <p>Dans un premier temps le script va récupérer le dernier polyfill de
+        purplesand et stocker son contenu dans une variable.</p>
+
+        <h4>Etape 2 : Récupérer les scripts</h4>
+
+        <p>Ensuite le script va récupérer le contenu des scripts à analyser
+        grace à l'attribut data-es5="check".</p>
+
+        <h4>Etape 3 : Récupérer les modules</h4>
+
+        <p>Ensuite le script va récupérer les modules puis les modules de
+        modules etc...</p>
+
+        <h4>Etape 4 : Changer les noms</h4>
+
+        <p>Ensuite le script va changer les noms des variables pour
+        les faire correspondre à leur module.</p>
+
+        <p></p>
+
+    </div>
+
+    <h3>Limites</h3>
+
+    <p>Le script es5 est encore en ALPHA, des corrections seront
+    ajoutées avec le temps afin de le rendre plus fiable.</p>
+
+    <p>Les limites actuelles sont les suivantes :</p>
+
+    <p>- Supporte uniquement les exports nommés</p>
+
+    <p>- Si vous utilisez de la syntaxe trop récente dans votre script elle ne
+    sera pas convertie, le script s'occupe uniquement d'éliminer les imports/exports.</p>
+
+    <p>- Vous devrez certainement retravailler une partie de votre code pour
+    qu'il fonctionne de manière adequat.</p>
 
 </div>
 
