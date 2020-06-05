@@ -9,7 +9,7 @@ pps.pps({
     css: [  1000, {transform: 'translateX({index*20}px)'},
             500, {backgroundColor: 'red', delay: 200}],
 
-    func: ()=>{console.log('finished')},
+    func: function(){console.log('finished')},
 
     css_2: [1000, {transform: 'translateX(80px)'}, 1000, {backgroundColor: 'blue'}]
 });
