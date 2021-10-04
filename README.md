@@ -4,10 +4,10 @@
 
 La documentation vous permettra de mieux comprendre le fonctionnement et l'installation de PurpleSand.
 
-- [Documentation](https://purplesand.enzoaicardi.com/doc/?page=pps)
-- [Intégrer](https://purplesand.enzoaicardi.com/doc/?page=integrer)
-- [Versions](https://purplesand.enzoaicardi.com/doc/?page=versions)
-- [GitHub](https://github.com/enzoaicardi/purplesand)
+- [Documentation](https://purple.aicardi.pro/doc/?page=pps)
+- [Intégrer](https://purple.aicardi.pro/doc/?page=integrer)
+- [Versions](https://purple.aicardi.pro/doc/?page=versions)
+- [GitHub](https://github.com/enzoaicardi/purple)
 
 ## C'est Quoi ?
 
